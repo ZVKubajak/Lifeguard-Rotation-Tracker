@@ -1,10 +1,16 @@
-// Make a function that adds a new row to the table. The function should be called by the Add Stand Button.
-
-// Make a function that removes the last row from the table. The function should be called by the Remove Stand Button.
-
 // Make a function that moves the value of the lifeguard input field down to the next row. If the value is already in the last row, it should be moved to the first row. This function should occur every 15 minutes.
 
+//
+
+// Before making the time interval function, we need all the tables for each time to generate the data. (So there needs to be a function that generates 24 tables from 1:00 to 7:00 if it is a weekend at West.) Then each of the tables should be ordered on a carousel that can change with the click of a previous and next button.
+
+// The carousel should also automatically change every 15 minutes once the time interval function is set up.
+
 const table = document.querySelector('table');
+
+/*
+    ADD STAND BUTTON
+*/
 
 function addStand () {
 
@@ -47,9 +53,18 @@ function addStand () {
 }
 
 const addStandButton = document.getElementById('as-button');
-
 addStandButton.addEventListener("click", addStand);
 
-function removeStand () {
+/*
+    REMOVE STAND BUTTON
+*/
 
+function removeStand () {
+    const rows = document.querySelectorAll('tr');
+    const lastRow = rows[rows.length - 1];
+    table.removeChild(lastRow);
+    return
 }
+
+const removeStandButton = document.getElementById('rs-button');
+removeStandButton.addEventListener("click", removeStand);

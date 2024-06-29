@@ -86,7 +86,15 @@ table {
     text-align: center;
   }
 
-  .text-input {
+  .stand-text-input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid rgb(200,200,200);
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .lifeguard-text-input {
     width: 100%;
     padding: 5px;
     border: 1px solid rgb(200,200,200);
@@ -152,4 +160,18 @@ table {
     margin-top: 15px;
     cursor: pointer;
     border-radius: 5px;
+}
+
+#test-button {
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 10px 100px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 15px;
+  cursor: pointer;
+  border-radius: 5px;
 }

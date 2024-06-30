@@ -26,7 +26,7 @@ document.addEventListener("keydown", function(event) {
 */
 
 document.getElementById('rotation-number').defaultValue = 1;
-const rotationNumber = document.getElementById('rotation-number');
+let rotationNumber = document.getElementById('rotation-number');
 
 function rotationLeft () {
     rotationNumber.value = parseInt(rotationNumber.value) - 1;
@@ -140,3 +140,45 @@ function getLifeguards () {
     console.log(lifeguards);
     return lifeguards;
 }
+
+/*
+    ROTATION FUNCTION
+*/
+
+function rotateLifeguards() {
+    const lifeguards = getLifeguards();
+    const lastLifeguard = lifeguards.pop();
+    lifeguards.unshift(lastLifeguard);
+    console.log(lifeguards);
+
+    const lifeguardCells = document.querySelectorAll('.lifeguard-text-input');
+    lifeguardCells.forEach((cell, index) => {
+        cell.value = lifeguards[index];
+    });
+
+    return lifeguards;
+}
+
+function unrotateLifeguards() {
+    const lifeguards = getLifeguards();
+    const firstLifeguard = lifeguards.shift();
+    lifeguards.push(firstLifeguard);
+    console.log(lifeguards);
+
+    const lifeguardCells = document.querySelectorAll('.lifeguard-text-input');
+    lifeguardCells.forEach((cell, index) => {
+        cell.value = lifeguards[index];
+    });
+
+    return lifeguards;
+}
+
+// Make sure the function is not called when the rotation number is < 1 or > 24.
+
+// Program the rotation number to calculate the current rotation for that number.
+
+// Create the break color function.
+
+/*
+    ROTATION TIME FUNCTION
+*/

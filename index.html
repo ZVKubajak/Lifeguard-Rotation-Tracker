@@ -14,12 +14,13 @@
         <div id="card-header">
             <h2>Current Rotation</h2>
             <div id="container">
-                <button id="left-button" onclick="rotationLeft ();">&lt;</button>
+                <button id="left-button" onclick="rotationLeft (); unrotateLifeguards ();">&lt;</button>
                 <input id="rotation-number" type="text">
-                <button id="right-button" onclick="rotationRight ();">&gt;</button>
+                <button id="right-button" onclick="rotationRight (); rotateLifeguards ();">&gt;</button>
             </div>
         </div>
         <div id="card-table">
+            <p id="rotation-time"></p>
             <table>
                 <tr>
                     <th>#</th>
@@ -31,7 +32,9 @@
         <div id="card-footer">
             <button id="as-button">Add Stand</button>
             <button id="rs-button">Remove Stand</button>
-            <button id="test-button" onclick="getStands (); getLifeguards ();">Test</button>
+            <!-- <button id="test-button" onclick="getStands (); getLifeguards ();">Test</button>
+            <button id="rotation-button" onclick="rotateLifeguards ();">Rotation Function</button>
+            <button id="break-button" onclick="breakColor();">Break Check</button> -->
         </div>
     </section>
 

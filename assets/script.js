@@ -22,6 +22,31 @@ document.addEventListener("keydown", function(event) {
 });
 
 /*
+    ROTATION NUMBER FUNCTION
+*/
+
+document.getElementById('rotation-number').defaultValue = 1;
+const rotationNumber = document.getElementById('rotation-number');
+
+function rotationLeft () {
+    rotationNumber.value = parseInt(rotationNumber.value) - 1;
+    if (isNaN(rotationNumber.value)) {
+        rotationNumber.value = 1;
+    } else if (rotationNumber.value < 1) {
+        rotationNumber.value = 1;
+    }
+}
+
+function rotationRight () {
+    rotationNumber.value = parseInt(rotationNumber.value) + 1;
+    if (isNaN(rotationNumber.value)) {
+        rotationNumber.value = 1;
+    } else if (rotationNumber.value > 24) {
+        rotationNumber.value = 24;
+    }
+}
+
+/*
     ADD STAND BUTTON
 */
 

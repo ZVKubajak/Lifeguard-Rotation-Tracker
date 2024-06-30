@@ -58,6 +58,40 @@ h2 {
     height: 2px;
 }
 
+#container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+#rotation-number {
+  width: 50px;
+  padding: 5px;
+  border: 1px solid rgb(200,200,200);
+  border-radius: 5px;
+  text-align: center;
+  font-size: larger;
+  margin: 0 20px;
+}
+
+#left-button {
+    font-size: large;
+    background-color: rgb(250,250,250);
+    height: 50px;
+    width: 50px;
+    border: 1px solid gray;
+    border-radius: 50%;
+}
+
+#right-button {
+    font-size: large;
+    background-color: rgb(250,250,250);
+    height: 50px;
+    width: 50px;
+    border: 1px solid gray;
+    border-radius: 50%;
+}
+
 /* CSS for Card Table */
 
 #card-table {

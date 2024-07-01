@@ -54,35 +54,103 @@ function unrotateLifeguards() {
 }
 
 /*
+    ROTATION TIME FUNCTION
+*/
+
+const currentTime = document.getElementById('rotation-time');
+
+function rotationTime() {
+    if (rotationNumber.value === '1') {
+        currentTime.textContent = '1:00 - 1:15';
+    } else if (rotationNumber.value === '2') {
+        currentTime.textContent = '1:15 - 1:30';
+    } else if (rotationNumber.value === '3') {
+        currentTime.textContent = '1:30 - 1:45';
+    } else if (rotationNumber.value === '4') {
+        currentTime.textContent = '1:45 - 2:00';
+    } else if (rotationNumber.value === '5') {
+        currentTime.textContent = '2:00 - 2:15';
+    } else if (rotationNumber.value === '6') {
+        currentTime.textContent = '2:15 - 2:30';
+    } else if (rotationNumber.value === '7') {
+        currentTime.textContent = '2:30 - 2:45';
+    } else if (rotationNumber.value === '8') { 
+        currentTime.textContent = '2:45 - 3:00';
+    } else if (rotationNumber.value === '9') {
+        currentTime.textContent = '3:00 - 3:15';
+    } else if (rotationNumber.value === '10') {
+        currentTime.textContent = '3:15 - 3:30';
+    } else if (rotationNumber.value === '11') {
+        currentTime.textContent = '3:30 - 3:45';
+    } else if (rotationNumber.value === '12') {
+        currentTime.textContent = '3:45 - 4:00';
+    } else if (rotationNumber.value === '13') {
+        currentTime.textContent = '4:00 - 4:15';
+    } else if (rotationNumber.value === '14') {
+        currentTime.textContent = '4:15 - 4:30';
+    } else if (rotationNumber.value === '15') {
+        currentTime.textContent = '4:30 - 4:45';
+    } else if (rotationNumber.value === '16') {
+        currentTime.textContent = '4:45 - 5:00';
+    } else if (rotationNumber.value === '17') {
+        currentTime.textContent = '5:00 - 5:15';
+    } else if (rotationNumber.value === '18') {
+        currentTime.textContent = '5:15 - 5:30';
+    } else if (rotationNumber.value === '19') {
+        currentTime.textContent = '5:30 - 5:45';
+    } else if (rotationNumber.value === '20') {
+        currentTime.textContent = '5:45 - 6:00';
+    } else if (rotationNumber.value === '21') {
+        currentTime.textContent = '6:00 - 6:15';
+    } else if (rotationNumber.value === '22') {
+        currentTime.textContent = '6:15 - 6:30';
+    } else if (rotationNumber.value === '23') {
+        currentTime.textContent = '6:30 - 6:45';
+    } else if (rotationNumber.value === '24') {
+        currentTime.textContent = '6:45 - 7:00';
+    }
+
+    return
+}
+
+/*
     ROTATION NUMBER FUNCTION
 */
 
 document.getElementById('rotation-number').defaultValue = 1;
-let rotationNumber = document.getElementById('rotation-number');
+const rotationNumber = document.getElementById('rotation-number');
 
 function rotationLeft () {
     if (isNaN(rotationNumber.value)) {
         rotationNumber.value = 1;
+        currentTime.textContent = '1:00 - 1:15';
     } else if (rotationNumber.value <= 1) {
         rotationNumber.value = 1;
+        currentTime.textContent = '1:00 - 1:15';
     } else if (rotationNumber.value >= 25) {
         rotationNumber.value = 24;
+        currentTime.textContent = '6:45 - 7:00';
     } else {
         rotationNumber.value = parseInt(rotationNumber.value) - 1;
         unrotateLifeguards();
+        rotationTime();
     }
 }
 
 function rotationRight () {
     if (isNaN(rotationNumber.value)) {
         rotationNumber.value = 1;
+        currentTime.textContent = '1:00 - 1:15';
     } else if (rotationNumber.value <= 0) {
         rotationNumber.value = 1;
+        currentTime.textContent = '1:00 - 1:15';
     } else if (rotationNumber.value >= 24) {
         rotationNumber.value = 24;
+        currentTime.textContent = '6:45 - 7:00';
     } else {
         rotationNumber.value = parseInt(rotationNumber.value) + 1;
         rotateLifeguards();
+        rotationTime();
     }
 }
 
@@ -148,6 +216,12 @@ const removeStandButton = document.getElementById('rs-button');
 removeStandButton.addEventListener("click", removeStand);
 
 /*
+    BREAK COLOR EVENT LISTENER
+*/
+
+//
+
+/*
     STAND ARRAY (NOT EFFECTED BY ROTATION FUNCTION)
 */
 
@@ -181,14 +255,8 @@ function getLifeguards () {
     return lifeguards;
 }
 
-// Make sure the function is not called when the rotation number is < 1 or > 24.
-
 // Program the rotation number to calculate the current rotation for that number. Do it by rotating the table as many times as the rotation number. Set rotation number to 1 before rotating to get the right result.
 
 // Create the break color function. It should color the entire row which includes the stand and lifeguard cells.
 
 // Create a function that displays the current time by using .textContent. The time should change when the rotation changes.
-
-/*
-    ROTATION TIME FUNCTION
-*/

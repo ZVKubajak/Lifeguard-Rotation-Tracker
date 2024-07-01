@@ -22,6 +22,38 @@ document.addEventListener("keydown", function(event) {
 });
 
 /*
+    ROTATION FUNCTION
+*/
+
+function rotateLifeguards() {
+    const lifeguards = getLifeguards();
+    const lastLifeguard = lifeguards.pop();
+    lifeguards.unshift(lastLifeguard);
+    console.log(lifeguards);
+
+    const lifeguardCells = document.querySelectorAll('.lifeguard-text-input');
+    lifeguardCells.forEach((cell, index) => {
+        cell.value = lifeguards[index];
+    });
+
+    return lifeguards;
+}
+
+function unrotateLifeguards() {
+    const lifeguards = getLifeguards();
+    const firstLifeguard = lifeguards.shift();
+    lifeguards.push(firstLifeguard);
+    console.log(lifeguards);
+
+    const lifeguardCells = document.querySelectorAll('.lifeguard-text-input');
+    lifeguardCells.forEach((cell, index) => {
+        cell.value = lifeguards[index];
+    });
+
+    return lifeguards;
+}
+
+/*
     ROTATION NUMBER FUNCTION
 */
 
@@ -29,20 +61,28 @@ document.getElementById('rotation-number').defaultValue = 1;
 let rotationNumber = document.getElementById('rotation-number');
 
 function rotationLeft () {
-    rotationNumber.value = parseInt(rotationNumber.value) - 1;
     if (isNaN(rotationNumber.value)) {
         rotationNumber.value = 1;
-    } else if (rotationNumber.value < 1) {
+    } else if (rotationNumber.value <= 1) {
         rotationNumber.value = 1;
+    } else if (rotationNumber.value >= 25) {
+        rotationNumber.value = 24;
+    } else {
+        rotationNumber.value = parseInt(rotationNumber.value) - 1;
+        unrotateLifeguards();
     }
 }
 
 function rotationRight () {
-    rotationNumber.value = parseInt(rotationNumber.value) + 1;
     if (isNaN(rotationNumber.value)) {
         rotationNumber.value = 1;
-    } else if (rotationNumber.value > 24) {
+    } else if (rotationNumber.value <= 0) {
+        rotationNumber.value = 1;
+    } else if (rotationNumber.value >= 24) {
         rotationNumber.value = 24;
+    } else {
+        rotationNumber.value = parseInt(rotationNumber.value) + 1;
+        rotateLifeguards();
     }
 }
 
@@ -141,43 +181,13 @@ function getLifeguards () {
     return lifeguards;
 }
 
-/*
-    ROTATION FUNCTION
-*/
-
-function rotateLifeguards() {
-    const lifeguards = getLifeguards();
-    const lastLifeguard = lifeguards.pop();
-    lifeguards.unshift(lastLifeguard);
-    console.log(lifeguards);
-
-    const lifeguardCells = document.querySelectorAll('.lifeguard-text-input');
-    lifeguardCells.forEach((cell, index) => {
-        cell.value = lifeguards[index];
-    });
-
-    return lifeguards;
-}
-
-function unrotateLifeguards() {
-    const lifeguards = getLifeguards();
-    const firstLifeguard = lifeguards.shift();
-    lifeguards.push(firstLifeguard);
-    console.log(lifeguards);
-
-    const lifeguardCells = document.querySelectorAll('.lifeguard-text-input');
-    lifeguardCells.forEach((cell, index) => {
-        cell.value = lifeguards[index];
-    });
-
-    return lifeguards;
-}
-
 // Make sure the function is not called when the rotation number is < 1 or > 24.
 
-// Program the rotation number to calculate the current rotation for that number.
+// Program the rotation number to calculate the current rotation for that number. Do it by rotating the table as many times as the rotation number. Set rotation number to 1 before rotating to get the right result.
 
-// Create the break color function.
+// Create the break color function. It should color the entire row which includes the stand and lifeguard cells.
+
+// Create a function that displays the current time by using .textContent. The time should change when the rotation changes.
 
 /*
     ROTATION TIME FUNCTION

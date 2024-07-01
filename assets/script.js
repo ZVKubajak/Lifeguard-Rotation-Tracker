@@ -53,6 +53,18 @@ function unrotateLifeguards() {
     return lifeguards;
 }
 
+/* function resetLifeguards() {
+    const startingLifeguards = getStartingLifeguards();
+    console.log(startingLifeguards);
+
+    const lifeguardCells = document.querySelectorAll('.lifeguard-text-input');
+    lifeguardCells.forEach((cell, index) => {
+        cell.value = startingLifeguards[index];
+    });
+
+    return startingLifeguards;
+} */
+
 /*
     ROTATION TIME FUNCTION
 */
@@ -121,37 +133,34 @@ document.getElementById('rotation-number').defaultValue = 1;
 const rotationNumber = document.getElementById('rotation-number');
 
 function rotationLeft () {
-    if (isNaN(rotationNumber.value)) {
+    if (isNaN(rotationNumber.value) || rotationNumber.value <= 1 || rotationNumber.value > 24) {
         rotationNumber.value = 1;
         currentTime.textContent = '1:00 - 1:15';
-    } else if (rotationNumber.value <= 1) {
-        rotationNumber.value = 1;
-        currentTime.textContent = '1:00 - 1:15';
-    } else if (rotationNumber.value >= 25) {
-        rotationNumber.value = 24;
-        currentTime.textContent = '6:45 - 7:00';
     } else {
         rotationNumber.value = parseInt(rotationNumber.value) - 1;
         unrotateLifeguards();
         rotationTime();
     }
+
+    return
 }
 
 function rotationRight () {
-    if (isNaN(rotationNumber.value)) {
+    if (isNaN(rotationNumber.value) || rotationNumber.value < 1) {
         rotationNumber.value = 1;
         currentTime.textContent = '1:00 - 1:15';
-    } else if (rotationNumber.value <= 0) {
-        rotationNumber.value = 1;
-        currentTime.textContent = '1:00 - 1:15';
-    } else if (rotationNumber.value >= 24) {
+    } else if (rotationNumber.value == 24) {
         rotationNumber.value = 24;
-        currentTime.textContent = '6:45 - 7:00';
+    } else if (rotationNumber.value > 24) {
+        rotationNumber.value = 1;
+        currentTime.textContent = '1:00 - 1:15';
     } else {
         rotationNumber.value = parseInt(rotationNumber.value) + 1;
         rotateLifeguards();
         rotationTime();
     }
+
+    return
 }
 
 /*
@@ -209,6 +218,7 @@ function removeStand () {
     const rows = document.querySelectorAll('tr');
     const lastRow = rows[rows.length - 1];
     table.removeChild(lastRow);
+
     return
 }
 
@@ -234,12 +244,12 @@ function getStands () {
         stands.push(input.value);
     });
 
-    console.log(stands);
+    // console.log(stands);
     return stands;
 }
 
 /*
-    LIFEGUARD ARRAY FOR ROTATION FUNCTION
+    LIFEGUARD ARRAY FOR ROTATION FUNCTION (INCLUDES STARTING LIFEGUARD ARRAY)
 */
 
 const lifeguards = [];
@@ -255,8 +265,27 @@ function getLifeguards () {
     return lifeguards;
 }
 
-// Program the rotation number to calculate the current rotation for that number. Do it by rotating the table as many times as the rotation number. Set rotation number to 1 before rotating to get the right result.
+/* const startingLifeguards = [];
 
-// Create the break color function. It should color the entire row which includes the stand and lifeguard cells.
+function getStartingLifeguards () {
+    const startingLifeguardInput = document.querySelectorAll('.lifeguard-text-input');
+    startingLifeguards.length = 0; // Clear the starting lifeguards array
+    startingLifeguardInput.forEach(input => {
+        startingLifeguards.push(input.value);
+    });
 
-// Create a function that displays the current time by using .textContent. The time should change when the rotation changes.
+    console.log(startingLifeguards);
+    return startingLifeguards;
+} */
+
+/*
+    PROBLEMS
+*/
+
+// The rotation number and time reset when the rotation number goes below 1 or above 24, but the lifeguards do not reset. The lifeguards should reset to their starting positions when the rotation number resets.
+
+// There needs to be a function that allows the user to type a number into the rotation number input field and a button that will update the time and table.
+
+// The break color function has not been created yet which might make the website hard to read.
+
+// !!! The program needs to be universal by having a settings menu where you can choose between 15, 20, 30 minute rotations, the number of rotations, and the hours of operation. !!!

@@ -179,7 +179,7 @@ table {
 }
 
 #as-button {
-    background-color: teal;
+    background-color: #55c2da;
     border: none;
     color: white;
     padding: 10px 100px;
@@ -193,7 +193,7 @@ table {
 }
 
 #rs-button {
-    background-color: darkred;
+    background-color: #ED0800;
     border: none;
     color: white;
     padding: 10px 100px;
@@ -204,6 +204,20 @@ table {
     margin-top: 15px;
     cursor: pointer;
     border-radius: 5px;
+}
+
+#save-button {
+  background-color: #33b249;
+  border: none;
+  color: white;
+  padding: 10px 100px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 15px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 #test-button {

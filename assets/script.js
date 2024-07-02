@@ -1,9 +1,3 @@
-// Make a function that moves the value of the lifeguard input field down to the next row. If the value is already in the last row, it should be moved to the first row. This function should occur every 15 minutes.
-
-// Before making the time interval function, we need all the tables for each time to generate the data. (So there needs to be a function that generates 24 tables from 1:00 to 7:00 if it is a weekend at West.) Then each of the tables should be ordered on a carousel that can change with the click of a previous and next button.
-
-// The carousel should also automatically change every 15 minutes once the time interval function is set up.
-
 const table = document.querySelector('table');
 
 /*
@@ -21,7 +15,33 @@ let lastStandCount = parseInt(localStorage.getItem('standCount'));
 
 // Stand Names
 
+let lastStandNamesJSON = localStorage.getItem('standNames');
+let lastStandNames = JSON.parse(lastStandNamesJSON) || [];
+    console.log(lastStandNames);
+
+    lastStandNames.forEach((name, index) => {
+    const standInput = document.querySelectorAll('.stand-text-input');
+    if (index >= standInput.length) {
+        return;
+    } else {
+        standInput[index].value = name;
+    }
+});
+
 // Lifeguard Names & Last Order
+
+let lastLifeguardNamesJSON = localStorage.getItem('lifeguardNames');
+let lastLifeguardNames = JSON.parse(lastLifeguardNamesJSON) || [];
+    console.log(lastLifeguardNames);
+
+    lastLifeguardNames.forEach((name, index) => {
+    const lifeguardInput = document.querySelectorAll('.lifeguard-text-input');
+    if (index >= lifeguardInput.length) {
+        return;
+    } else {
+        lifeguardInput[index].value = name;
+    }
+});
 
 /*
     ENTER FOCUS FUNCTION
@@ -46,7 +66,7 @@ function rotateLifeguards() {
     const lifeguards = getLifeguards();
     const lastLifeguard = lifeguards.pop();
     lifeguards.unshift(lastLifeguard);
-    console.log(lifeguards);
+    // console.log(lifeguards);
 
     const lifeguardCells = document.querySelectorAll('.lifeguard-text-input');
     lifeguardCells.forEach((cell, index) => {
@@ -60,7 +80,7 @@ function unrotateLifeguards() {
     const lifeguards = getLifeguards();
     const firstLifeguard = lifeguards.shift();
     lifeguards.push(firstLifeguard);
-    console.log(lifeguards);
+    // console.log(lifeguards);
 
     const lifeguardCells = document.querySelectorAll('.lifeguard-text-input');
     lifeguardCells.forEach((cell, index) => {
@@ -279,7 +299,23 @@ function getLifeguards () {
 }
 
 /*
-    PROBLEMS
+    SAVE BUTTON
+*/
+
+function saveToLocalStorage () {
+    getStands();
+    let standNames = JSON.stringify(stands);
+    localStorage.setItem('standNames', standNames);
+    // console.log(standNames);
+
+    getLifeguards();
+    let lifeguardNames = JSON.stringify(lifeguards);
+    localStorage.setItem('lifeguardNames', lifeguardNames);
+    // console.log(lifeguardNames);
+}
+
+/*
+    FUTURE UPDATES
 */
 
 // The rotation number and time reset when the rotation number goes below 1 or above 24, but the lifeguards do not reset. The lifeguards should reset to their starting positions when the rotation number resets.
@@ -290,4 +326,10 @@ function getLifeguards () {
 
 // !!! The program needs to be universal by having a settings menu where you can choose between 15, 20, 30 minute rotations, the number of rotations, and the hours of operation. !!!
 
-// LOOK INTO LOCAL STORAGE
+
+
+// Make a function that moves the value of the lifeguard input field down to the next row. If the value is already in the last row, it should be moved to the first row. This function should occur every 15 minutes.
+
+// Before making the time interval function, we need all the tables for each time to generate the data. (So there needs to be a function that generates 24 tables from 1:00 to 7:00 if it is a weekend at West.) Then each of the tables should be ordered on a carousel that can change with the click of a previous and next button.
+
+// The carousel should also automatically change every 15 minutes once the time interval function is set up.

@@ -7,6 +7,23 @@
 const table = document.querySelector('table');
 
 /*
+    LOCAL STORAGE
+*/
+
+// Stand Count
+
+let lastStandCount = parseInt(localStorage.getItem('standCount'));
+    console.log(lastStandCount);
+
+    for (let i = 0; i < lastStandCount; i++) {
+        addStand();
+    }
+
+// Stand Names
+
+// Lifeguard Names & Last Order
+
+/*
     ENTER FOCUS FUNCTION
 */
 
@@ -52,18 +69,6 @@ function unrotateLifeguards() {
 
     return lifeguards;
 }
-
-/* function resetLifeguards() {
-    const startingLifeguards = getStartingLifeguards();
-    console.log(startingLifeguards);
-
-    const lifeguardCells = document.querySelectorAll('.lifeguard-text-input');
-    lifeguardCells.forEach((cell, index) => {
-        cell.value = startingLifeguards[index];
-    });
-
-    return startingLifeguards;
-} */
 
 /*
     ROTATION TIME FUNCTION
@@ -204,6 +209,10 @@ function addStand () {
     row.appendChild(lifeguardCell);
     lifeguardCell.appendChild(lifeguardText);
 
+    // Tracking Last Stand Count
+
+    localStorage.setItem('standCount', num);
+    
     return
 }
 
@@ -218,6 +227,10 @@ function removeStand () {
     const rows = document.querySelectorAll('tr');
     const lastRow = rows[rows.length - 1];
     table.removeChild(lastRow);
+
+    // Tracking Last Stand Count
+
+    localStorage.setItem('standCount', document.querySelectorAll('tr').length - 1);
 
     return
 }
@@ -261,22 +274,9 @@ function getLifeguards () {
         lifeguards.push(input.value);
     });
 
-    console.log(lifeguards);
+    // console.log(lifeguards);
     return lifeguards;
 }
-
-/* const startingLifeguards = [];
-
-function getStartingLifeguards () {
-    const startingLifeguardInput = document.querySelectorAll('.lifeguard-text-input');
-    startingLifeguards.length = 0; // Clear the starting lifeguards array
-    startingLifeguardInput.forEach(input => {
-        startingLifeguards.push(input.value);
-    });
-
-    console.log(startingLifeguards);
-    return startingLifeguards;
-} */
 
 /*
     PROBLEMS
@@ -289,3 +289,5 @@ function getStartingLifeguards () {
 // The break color function has not been created yet which might make the website hard to read.
 
 // !!! The program needs to be universal by having a settings menu where you can choose between 15, 20, 30 minute rotations, the number of rotations, and the hours of operation. !!!
+
+// LOOK INTO LOCAL STORAGE

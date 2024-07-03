@@ -1,3 +1,5 @@
+// * Brought to you by Zesty-Z!
+
 const table = document.querySelector('table');
 
 /*
@@ -44,7 +46,7 @@ let lastLifeguardNames = JSON.parse(lastLifeguardNamesJSON) || [];
 });
 
 /*
-    ENTER FOCUS FUNCTION
+    NEXT INPUT FUNCTION
 */
 
 document.addEventListener("keydown", function(event) {
@@ -97,70 +99,66 @@ function unrotateLifeguards() {
 const currentTime = document.getElementById('rotation-time');
 
 function rotationTime() {
-    if (rotationNumber.value === '1') {
-        currentTime.textContent = '1:00 - 1:15';
-    } else if (rotationNumber.value === '2') {
-        currentTime.textContent = '1:15 - 1:30';
-    } else if (rotationNumber.value === '3') {
-        currentTime.textContent = '1:30 - 1:45';
-    } else if (rotationNumber.value === '4') {
-        currentTime.textContent = '1:45 - 2:00';
-    } else if (rotationNumber.value === '5') {
-        currentTime.textContent = '2:00 - 2:15';
-    } else if (rotationNumber.value === '6') {
-        currentTime.textContent = '2:15 - 2:30';
-    } else if (rotationNumber.value === '7') {
-        currentTime.textContent = '2:30 - 2:45';
-    } else if (rotationNumber.value === '8') { 
-        currentTime.textContent = '2:45 - 3:00';
-    } else if (rotationNumber.value === '9') {
-        currentTime.textContent = '3:00 - 3:15';
-    } else if (rotationNumber.value === '10') {
-        currentTime.textContent = '3:15 - 3:30';
-    } else if (rotationNumber.value === '11') {
-        currentTime.textContent = '3:30 - 3:45';
-    } else if (rotationNumber.value === '12') {
-        currentTime.textContent = '3:45 - 4:00';
-    } else if (rotationNumber.value === '13') {
-        currentTime.textContent = '4:00 - 4:15';
-    } else if (rotationNumber.value === '14') {
-        currentTime.textContent = '4:15 - 4:30';
-    } else if (rotationNumber.value === '15') {
-        currentTime.textContent = '4:30 - 4:45';
-    } else if (rotationNumber.value === '16') {
-        currentTime.textContent = '4:45 - 5:00';
-    } else if (rotationNumber.value === '17') {
-        currentTime.textContent = '5:00 - 5:15';
-    } else if (rotationNumber.value === '18') {
-        currentTime.textContent = '5:15 - 5:30';
-    } else if (rotationNumber.value === '19') {
-        currentTime.textContent = '5:30 - 5:45';
-    } else if (rotationNumber.value === '20') {
-        currentTime.textContent = '5:45 - 6:00';
-    } else if (rotationNumber.value === '21') {
-        currentTime.textContent = '6:00 - 6:15';
-    } else if (rotationNumber.value === '22') {
-        currentTime.textContent = '6:15 - 6:30';
-    } else if (rotationNumber.value === '23') {
-        currentTime.textContent = '6:30 - 6:45';
-    } else if (rotationNumber.value === '24') {
-        currentTime.textContent = '6:45 - 7:00';
-    }
+    const rotationNumberValue = rotationNumber.value;
+    const timeRanges = [
+        '2:00 - 2:15',
+        '2:15 - 2:30',
+        '2:30 - 2:45',
+        '2:45 - 3:00',
+        '3:00 - 3:15',
+        '3:15 - 3:30',
+        '3:30 - 3:45',
+        '3:45 - 4:00',
+        '4:00 - 4:15',
+        '4:15 - 4:30',
+        '4:30 - 4:45',
+        '4:45 - 5:00',
+        '5:00 - 5:15',
+        '5:15 - 5:30',
+        '5:30 - 5:45',
+        '5:45 - 6:00',
+        '6:00 - 6:15',
+        '6:15 - 6:30',
+        '6:30 - 6:45',
+        '6:45 - 7:00',
+        '7:00 - 7:15',
+        '7:15 - 7:30',
+        '7:30 - 7:45',
+        '7:45 - 8:00'
+    ];
 
-    return
+    if (rotationNumberValue >= 1 && rotationNumberValue <= 24) {
+        currentTime.textContent = timeRanges[rotationNumberValue - 1];
+    } else {
+        currentTime.textContent = '';
+    }
 }
 
 /*
     ROTATION NUMBER FUNCTION
 */
 
-document.getElementById('rotation-number').defaultValue = 1;
 const rotationNumber = document.getElementById('rotation-number');
+
+// ----- Last Rotation Number -----
+
+let lastRotationNumber = parseInt(localStorage.getItem('rotationNumber'));
+    console.log(lastRotationNumber);
+
+    rotationNumber.value = lastRotationNumber; // Rotation Number (from Local Storage)
+
+if (isNaN(rotationNumber.value))  {
+    rotationNumber.value = 1;
+} else {
+    rotationTime();
+}
+
+// ----- Last Rotation Number -----
 
 function rotationLeft () {
     if (isNaN(rotationNumber.value) || rotationNumber.value <= 1 || rotationNumber.value > 24) {
         rotationNumber.value = 1;
-        currentTime.textContent = '1:00 - 1:15';
+        currentTime.textContent = '2:00 - 2:15';
     } else {
         rotationNumber.value = parseInt(rotationNumber.value) - 1;
         unrotateLifeguards();
@@ -173,12 +171,12 @@ function rotationLeft () {
 function rotationRight () {
     if (isNaN(rotationNumber.value) || rotationNumber.value < 1) {
         rotationNumber.value = 1;
-        currentTime.textContent = '1:00 - 1:15';
+        currentTime.textContent = '2:00 - 2:15';
     } else if (rotationNumber.value == 24) {
         rotationNumber.value = 24;
     } else if (rotationNumber.value > 24) {
         rotationNumber.value = 1;
-        currentTime.textContent = '1:00 - 1:15';
+        currentTime.textContent = '2:00 - 2:15';
     } else {
         rotationNumber.value = parseInt(rotationNumber.value) + 1;
         rotateLifeguards();
@@ -228,10 +226,6 @@ function addStand () {
 
     row.appendChild(lifeguardCell);
     lifeguardCell.appendChild(lifeguardText);
-
-    // Tracking Last Stand Count
-
-    localStorage.setItem('standCount', num);
     
     return
 }
@@ -247,10 +241,6 @@ function removeStand () {
     const rows = document.querySelectorAll('tr');
     const lastRow = rows[rows.length - 1];
     table.removeChild(lastRow);
-
-    // Tracking Last Stand Count
-
-    localStorage.setItem('standCount', document.querySelectorAll('tr').length - 1);
 
     return
 }
@@ -303,15 +293,26 @@ function getLifeguards () {
 */
 
 function saveToLocalStorage () {
+
+    // Stand Names
     getStands();
     let standNames = JSON.stringify(stands);
     localStorage.setItem('standNames', standNames);
     // console.log(standNames);
 
+    // Lifeguard Names & Last Order
     getLifeguards();
     let lifeguardNames = JSON.stringify(lifeguards);
     localStorage.setItem('lifeguardNames', lifeguardNames);
     // console.log(lifeguardNames);
+
+    // Stand Count
+    localStorage.setItem('standCount', document.querySelectorAll('tr').length - 1);
+
+    // Rotation Number
+    const rotationNumberForLS = rotationNumber.value;
+
+    localStorage.setItem('rotationNumber', rotationNumberForLS);
 }
 
 /*

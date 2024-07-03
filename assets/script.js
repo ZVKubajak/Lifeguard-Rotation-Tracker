@@ -200,6 +200,8 @@ function addStand () {
     const standCell = document.createElement('td');
     const lifeguardCell = document.createElement('td');
 
+    numCell.className = "hide-query";
+
     // Creating text input elements for each cell
 
     const numText = document.createElement("p");

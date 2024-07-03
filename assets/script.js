@@ -3,6 +3,16 @@
 const table = document.querySelector('table');
 
 /*
+    TURN OFF DOUBLE TAP ZOOM
+*/
+
+document.addEventListener('touchstart', function(event) {
+    if (event.touches.length > 1) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+/*
     LOCAL STORAGE
 */
 

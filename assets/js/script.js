@@ -3,16 +3,6 @@
 const table = document.querySelector('table');
 
 /*
-    TURN OFF DOUBLE TAP ZOOM
-*/
-
-document.addEventListener('touchstart', function(event) {
-    if (event.touches.length > 1) {
-        event.preventDefault();
-    }
-}, { passive: false });
-
-/*
     LOCAL STORAGE
 */
 
@@ -111,10 +101,6 @@ const currentTime = document.getElementById('rotation-time');
 function rotationTime() {
     const rotationNumberValue = rotationNumber.value;
     const timeRanges = [
-        '1:00 - 1:15',
-        '1:15 - 1:30',
-        '1:30 - 1:45',
-        '1:45 - 2:00',
         '2:00 - 2:15',
         '2:15 - 2:30',
         '2:30 - 2:45',
@@ -134,7 +120,11 @@ function rotationTime() {
         '6:00 - 6:15',
         '6:15 - 6:30',
         '6:30 - 6:45',
-        '6:45 - 7:00'
+        '6:45 - 7:00',
+        '7:00 - 7:15',
+        '7:15 - 7:30',
+        '7:30 - 7:45',
+        '7:45 - 8:00'
     ];
 
     if (rotationNumberValue >= 1 && rotationNumberValue <= 24) {

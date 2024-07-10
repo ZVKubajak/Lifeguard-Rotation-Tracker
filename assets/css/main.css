@@ -226,48 +226,6 @@ table {
   border-radius: 5px;
 }
 
-#test-button {
-  background-color: blue;
-  border: none;
-  color: white;
-  padding: 10px 100px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-top: 15px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-#rotation-button {
-  background-color: blue;
-  border: none;
-  color: white;
-  padding: 10px 100px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-top: 15px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-#break-button {
-  background-color: blue;
-  border: none;
-  color: white;
-  padding: 10px 100px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-top: 15px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
 @media screen and (width <= 480px) {
   #card-table {
     padding: 0 0 20px 0;

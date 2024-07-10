@@ -1,3 +1,5 @@
+// !!! SCRIPT.JS NOT IN USE !!!
+
 // * Brought to you by Zesty-Z!
 
 const table = document.querySelector('table');

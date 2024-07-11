@@ -90,6 +90,10 @@ h2 {
     border-radius: 50%;
 }
 
+#left-button:active {
+    background-color: rgb(240,240,240);
+}
+
 #right-button {
     cursor: pointer;
     font-size: larger;
@@ -98,6 +102,10 @@ h2 {
     width: 50px;
     border: 1px solid gray;
     border-radius: 50%;
+}
+
+#right-button:active {
+    background-color: rgb(240,240,240);
 }
 
 /* CSS for Card Table */
@@ -198,6 +206,10 @@ table {
     border-radius: 5px;
 }
 
+#as-button:active {
+    background-color: #4db7cf;
+}
+
 #rs-button {
     background-color: #ED0800;
     border: none;
@@ -212,6 +224,10 @@ table {
     border-radius: 5px;
 }
 
+#rs-button:active {
+    background-color: #d10800;
+}
+
 #save-button {
   background-color: #33b249;
   border: none;
@@ -224,6 +240,10 @@ table {
   margin-top: 15px;
   cursor: pointer;
   border-radius: 5px;
+}
+
+#save-button:active {
+  background-color: #2e9f41;
 }
 
 @media screen and (width <= 480px) {

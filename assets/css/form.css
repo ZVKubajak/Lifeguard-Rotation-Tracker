@@ -69,14 +69,14 @@ h1 {
   font-size: 18px;
   margin: 0 auto;
   max-width: 30%;
-  padding: 30px 40px;
+  padding: 20px 40px;
 }
 
 #card-header::after {
   content: " ";
   display: block;
   width: 100%;
-  background: #e7e9eb;
+  background: linear-gradient(to right, lightcoral, lightblue);
   height: 2px;
 }
 
@@ -87,6 +87,15 @@ h2 {
 
 #form {
   padding-top: 12px;
+}
+
+#form::after {
+  content: " ";
+  display: block;
+  width: 100%;
+  background: linear-gradient(to right, lightcoral, lightblue);
+  height: 2px;
+  margin-top: 12px;
 }
 
 #minute-15 {
@@ -101,8 +110,14 @@ h2 {
   display: none;
 }
 
+#time-select-text {
+  display: block;
+  padding-top: 12px;
+  font-size: 20px;
+}
+
 .time-select {
-  padding: .375rem 2.25rem .375rem .75rem;
+  padding: .375rem .75rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -118,4 +133,21 @@ h2 {
   border: var(--bs-border-width) solid var(--bs-border-color);
   border-radius: var(--bs-border-radius);
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+#card-footer {
+  text-align: center;
+  padding-top: 20px;
+}
+
+#submit-form {
+  padding: 0 50px;
+  border-radius: 5px;
+  border-color: #33b249;
+  background-color: #33b249;
+  color: white;
+}
+
+#submit-form:active {
+  background-color: #2e9f41;
 }

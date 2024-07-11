@@ -99,7 +99,7 @@ h2 {
 }
 
 #minute-15 {
-  display: inline;
+  display: none;
 }
 
 #minute-20 {
@@ -111,7 +111,7 @@ h2 {
 }
 
 #time-select-text {
-  display: block;
+  display: none;
   padding-top: 12px;
   font-size: 20px;
 }

@@ -1,13 +1,3 @@
-<!--
-
-1. Create a header that welcomes the user to the site.
-
-2. Create a form that needs the hours of operation and a choice for 15, 20, or 30 minute rotations.
-
-3. Create a submit button that collects the form data and redirects the user to the main page.
-
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,10 +20,10 @@
 
         <form id="form">
             <select id="rotation-length" class="form-select" aria-label="Select Rotation Length">
-                <option selected>Length for Each Rotation</option>
-                <option value="1">15 Minutes</option>
-                <option value="2">20 Minutes</option>
-                <option value="3">30 Minutes</option>
+                <option disabled selected>Length for Each Rotation</option>
+                <option id="rl-option-1" value="1">15 Minutes</option>
+                <option id="rl-option-2" value="2">20 Minutes</option>
+                <option id="rl-option-3" value="3">30 Minutes</option>
             </select>
 
             <h3 id="time-select-text">Select Hours of Operation:</h3>

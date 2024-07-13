@@ -25,7 +25,7 @@ selectLength.addEventListener('change', function() {
   }
 });
 
-// Now we need to save the inputs from the form into local storage or something when the user clicks the submit button.
+// ! COLLECT FORM DATA FUNCTION
 
 function collectFormData () {
 
@@ -125,7 +125,16 @@ function collectFormData () {
   }
 };
 
+// ! REDIRECT TO MAIN FUNCTION
+
+function redirectToMain () {
+  window.location.href = 'main.html';
+};
+
 // ! SUBMIT FORM EVENT LISTENER
 
 const submitForm = document.getElementById('submit-form');
-submitForm.addEventListener('click', collectFormData);
+submitForm.addEventListener('click', function() {
+  collectFormData();
+  redirectToMain();
+});

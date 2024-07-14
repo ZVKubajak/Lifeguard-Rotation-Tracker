@@ -158,7 +158,7 @@ if (isNaN(rotationNumber.value))  {
 function rotationLeft () {
     if (isNaN(rotationNumber.value) || rotationNumber.value <= 1 || rotationNumber.value > 24) {
         rotationNumber.value = 1;
-        currentTime.textContent = '2:00 - 2:15';
+        currentTime.textContent = '1:00 - 1:15';
     } else {
         rotationNumber.value = parseInt(rotationNumber.value) - 1;
         unrotateLifeguards();
@@ -171,12 +171,12 @@ function rotationLeft () {
 function rotationRight () {
     if (isNaN(rotationNumber.value) || rotationNumber.value < 1) {
         rotationNumber.value = 1;
-        currentTime.textContent = '2:00 - 2:15';
+        currentTime.textContent = '1:00 - 1:15';
     } else if (rotationNumber.value == 24) {
         rotationNumber.value = 24;
     } else if (rotationNumber.value > 24) {
         rotationNumber.value = 1;
-        currentTime.textContent = '2:00 - 2:15';
+        currentTime.textContent = '1:00 - 1:15';
     } else {
         rotationNumber.value = parseInt(rotationNumber.value) + 1;
         rotateLifeguards();

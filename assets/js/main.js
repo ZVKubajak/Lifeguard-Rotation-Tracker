@@ -1,43 +1,77 @@
 /*
-    * FUNCTIONS
+    * SETTING START TIME
 */
 
 const rotationLength = JSON.parse(localStorage.getItem('rotation-length'));
+// console.log(rotationLength);
 
-console.log(rotationLength);
+const startTime = JSON.parse(localStorage.getItem('start15')) || JSON.parse(localStorage.getItem('start20')) || JSON.parse(localStorage.getItem('start30'));
+const endTime = JSON.parse(localStorage.getItem('end15')) || JSON.parse(localStorage.getItem('end20')) || JSON.parse(localStorage.getItem('end30'));
+// console.log(startTime);
+// console.log(endTime);
+
+const startHour = document.getElementById('start-hour');
+// :
+const startMinute = document.getElementById('start-minute');
+const startAmPm = document.getElementById('start-ampm');
+// -
+const nextHour = document.getElementById('next-hour');
+// :
+const nextMinute = document.getElementById('next-minute');
+const nextAmPm = document.getElementById('next-ampm');
+
+startHour.value = startTime.hour;
+startMinute.value = startTime.minute;
+// startAmPm.value = startTime.ampm;
 
 if (rotationLength == 15) {
-    console.log('15 minutes');
+    nextHour.value = parseInt(startTime.hour);
+    if (parseInt(startTime.minute) + 15 == 60) {
+        if (parseInt(startTime.hour) === 12) {
+            nextHour.value = 1;
+        } else {
+            nextHour.value = parseInt(startTime.hour) + 1;
+        }
+    }
+    nextMinute.value = ((parseInt(startTime.minute) + 15) % 60).toString().padStart(2, '0');
+    // NextAmPm.value
 } else if (rotationLength == 20) {
     console.log('20 minutes');
 } else if (rotationLength == 30) {
     console.log('30 minutes');
 }
 
-const startTime = JSON.parse(localStorage.getItem('start15')) || JSON.parse(localStorage.getItem('start20')) || JSON.parse(localStorage.getItem('start30'));
-const endTime = JSON.parse(localStorage.getItem('end15')) || JSON.parse(localStorage.getItem('end20')) || JSON.parse(localStorage.getItem('end30'));
-
-console.log(startTime);
-console.log(endTime);
+/*
+    * FUNCTIONS
+*/
 
 // ! ROTATION TIME FUNCTION
 // ? NEEDS REWORKING
 
-const startHour = document.getElementById('start-hour');
-const startMinute = document.getElementById('start-minute');
-const startAmPm = document.getElementById('start-ampm');
+// If start time == end time, make that the last rotation number.
 
-const endHour = document.getElementById('end-hour');
-const endMinute = document.getElementById('end-minute');
-const endAmPm = document.getElementById('end-ampm');
+// If rotationLength.value == 15, add 15 minutes to the start time for each rotation number.
+// Else if rotationLength.value == 20, add 20 minutes to the start time for each rotation number.
+// Else if rotationLength.value == 30, add 30 minutes to the start time for each rotation number.
 
-startHour.setAttribute('value', startTime.hour);
-startMinute.setAttribute('value', startTime.minute);
-startAmPm.setAttribute('value', startTime.ampm);
+function addTime () {
 
-endHour.setAttribute('value', endTime.hour);
-endMinute.setAttribute('value', endTime.minute);
-endAmPm.setAttribute('value', endTime.ampm);
+    if (rotationLength == 15) {
+        nextMinute.value = ((parseInt(nextMinute.value) + 15) % 60).toString().padStart(2, '0');
+        if (parseInt(nextMinute.value) === 0) {
+            if (parseInt(nextHour.value) === 12) {
+            nextHour.value = 1;
+            } else {
+            nextHour.value = parseInt(nextHour.value) + 1;
+            }
+        }
+    } else if (rotationLength == 20) {
+        console.log('20 minutes');
+    } else if (rotationLength == 30) {
+        console.log('30 minutes');
+    }
+    
+}
 
 /* const currentTime = document.getElementById('rotation-time'); */
 
@@ -188,8 +222,7 @@ function rotationRight () {
       currentTime.textContent = '2:00 - 2:15';
   } else {
       rotationNumber.value = parseInt(rotationNumber.value) + 1;
-      rotateLifeguards();
-      rotationTime();
+      addTime();
   }
 
   return

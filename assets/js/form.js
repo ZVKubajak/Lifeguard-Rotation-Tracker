@@ -48,13 +48,13 @@ function collectFormData () {
     const start15 = {
       hour: startHour15.value,
       minute: startMinute15.value,
-      ampm: startAmPm15.value
+      // ampm: startAmPm15.value
     };
 
     const end15 = {
       hour: endHour15.value,
       minute: endMinute15.value,
-      ampm: endAmPm15.value
+      // ampm: endAmPm15.value
     };
 
     console.log(start15);
@@ -87,13 +87,13 @@ function collectFormData () {
     const start20 = {
       hour: startHour20.value,
       minute: startMinute20.value,
-      ampm: startAmPm20.value
+      // ampm: startAmPm20.value
     };
 
     const end20 = {
       hour: endHour20.value,
       minute: endMinute20.value,
-      ampm: endAmPm20.value
+      // ampm: endAmPm20.value
     };
 
     console.log(start20);
@@ -126,13 +126,13 @@ function collectFormData () {
     const start30 = {
       hour: startHour30.value,
       minute: startMinute30.value,
-      ampm: startAmPm30.value
+      // ampm: startAmPm30.value
     };
 
     const end30 = {
       hour: endHour30.value,
       minute: endMinute30.value,
-      ampm: endAmPm30.value
+      // ampm: endAmPm30.value
     };
 
     console.log(start30);

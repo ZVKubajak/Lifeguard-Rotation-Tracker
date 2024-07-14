@@ -87,6 +87,7 @@ h2 {
 
 #form {
   padding-top: 12px;
+  text-align: center;
 }
 
 #form::after {

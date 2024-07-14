@@ -2,9 +2,44 @@
     * FUNCTIONS
 */
 
-// ! ROTATION TIME FUNCTION
+const rotationLength = JSON.parse(localStorage.getItem('rotation-length'));
 
-const currentTime = document.getElementById('rotation-time');
+console.log(rotationLength);
+
+if (rotationLength == 15) {
+    console.log('15 minutes');
+} else if (rotationLength == 20) {
+    console.log('20 minutes');
+} else if (rotationLength == 30) {
+    console.log('30 minutes');
+}
+
+const startTime = JSON.parse(localStorage.getItem('start15')) || JSON.parse(localStorage.getItem('start20')) || JSON.parse(localStorage.getItem('start30'));
+const endTime = JSON.parse(localStorage.getItem('end15')) || JSON.parse(localStorage.getItem('end20')) || JSON.parse(localStorage.getItem('end30'));
+
+console.log(startTime);
+console.log(endTime);
+
+// ! ROTATION TIME FUNCTION
+// ? NEEDS REWORKING
+
+const startHour = document.getElementById('start-hour');
+const startMinute = document.getElementById('start-minute');
+const startAmPm = document.getElementById('start-ampm');
+
+const endHour = document.getElementById('end-hour');
+const endMinute = document.getElementById('end-minute');
+const endAmPm = document.getElementById('end-ampm');
+
+startHour.setAttribute('value', startTime.hour);
+startMinute.setAttribute('value', startTime.minute);
+startAmPm.setAttribute('value', startTime.ampm);
+
+endHour.setAttribute('value', endTime.hour);
+endMinute.setAttribute('value', endTime.minute);
+endAmPm.setAttribute('value', endTime.ampm);
+
+/* const currentTime = document.getElementById('rotation-time'); */
 
 function rotationTime() {
   const rotationNumberValue = rotationNumber.value;
@@ -43,6 +78,7 @@ function rotationTime() {
 }
 
 // ! ROTATION NUMBER FUNCTION
+// ? NEEDS REWORKING
 
 const rotationNumber = document.getElementById('rotation-number');
 
@@ -122,6 +158,7 @@ function unrotateLifeguards() {
 }
 
 // ! LR BUTTON FUNCTIONS
+// ? NEEDS REWORKING
 
 // ? LEFT BUTTON
 

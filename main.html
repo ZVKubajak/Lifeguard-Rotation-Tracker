@@ -20,7 +20,19 @@
             </div>
         </div>
         <div id="card-table">
-            <p id="rotation-time">1:00-1:15</p>
+
+            <div id="rotation-time">
+                <input id="start-hour" class="rotation-input" value="12" readonly>
+                :
+                <input id="start-minute" class="rotation-input" value="00" readonly>
+                <input id="start-ampm" class="rotation-input" value="AM" readonly>
+                -
+                <input id="end-hour" class="rotation-input" value="12" readonly>
+                :
+                <input id="end-minute" class="rotation-input" value="00" readonly>
+                <input id="end-ampm" class="rotation-input" value="PM" readonly>
+            </div>
+
             <table>
                 <tr>
                     <th class="hide-query">#</th>
@@ -28,6 +40,7 @@
                     <th>LIFEGUARD</th>
                 </tr>
             </table>
+
         </div>
         <div id="card-footer">
             <button id="as-button">Add Stand</button>

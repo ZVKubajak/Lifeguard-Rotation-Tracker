@@ -10,15 +10,15 @@ selectLength.addEventListener('change', function() {
   const minute20 = document.getElementById('minute-20');
   const minute30 = document.getElementById('minute-30');
 
-  if (selectLength.value == 1) {
+  if (selectLength.value == 15) {
     minute15.setAttribute('style', 'display: inline');
     minute20.setAttribute('style', 'display: none');
     minute30.setAttribute('style', 'display: none');
-  } else if (selectLength.value == 2) {
+  } else if (selectLength.value == 20) {
     minute15.setAttribute('style', 'display: none');
     minute20.setAttribute('style', 'display: inline');
     minute30.setAttribute('style', 'display: none');
-  } else if (selectLength.value == 3) {
+  } else if (selectLength.value == 30) {
     minute15.setAttribute('style', 'display: none');
     minute20.setAttribute('style', 'display: none');
     minute30.setAttribute('style', 'display: inline');
@@ -29,7 +29,7 @@ selectLength.addEventListener('change', function() {
 
 function collectFormData () {
 
-  if (selectLength.value == 1) {
+  if (selectLength.value == 15) {
 
     const startHour15 = document.getElementById('start-hour-15');
     // console.log(startHour15.value);
@@ -68,7 +68,7 @@ function collectFormData () {
     localStorage.removeItem('start30');
     localStorage.removeItem('end30');
 
-  } else if (selectLength.value == 2) {
+  } else if (selectLength.value == 20) {
     
     const startHour20 = document.getElementById('start-hour-20');
     // console.log(startHour20.value);
@@ -107,7 +107,7 @@ function collectFormData () {
     localStorage.removeItem('start30');
     localStorage.removeItem('end30');
 
-  } else if (selectLength.value == 3) {
+  } else if (selectLength.value == 30) {
 
     const startHour30 = document.getElementById('start-hour-30');
     // console.log(startHour30.value);
@@ -159,6 +159,7 @@ function redirectToMain () {
 
 const submitForm = document.getElementById('submit-form');
 submitForm.addEventListener('click', function() {
+  localStorage.setItem('rotation-length', JSON.stringify(selectLength.value));
   collectFormData();
   redirectToMain();
 });

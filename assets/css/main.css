@@ -120,6 +120,20 @@ h2 {
   font-weight: bold;
 }
 
+#rotation-time {
+  text-align: center;
+}
+
+.rotation-input {
+  width: 40px;
+  padding: 5px;
+  border: 1px solid rgb(200,200,200);
+  border-radius: 5px;
+  text-align: center;
+  font-size: large;
+  margin: 15px 0;
+}
+
 table {
     border-collapse: collapse;
     border: 2px solid rgb(200,200,200);

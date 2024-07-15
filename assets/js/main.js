@@ -20,43 +20,46 @@ const nextHour = document.getElementById('next-hour');
 const nextMinute = document.getElementById('next-minute');
 const nextAmPm = document.getElementById('next-ampm');
 
-startHour.value = startTime.hour;
-startMinute.value = startTime.minute;
-// startAmPm.value = startTime.ampm;
+function setStartTime () {
 
-if (rotationLength == 15) {
-    nextHour.value = parseInt(startTime.hour);
-    if (parseInt(startTime.minute) + 15 == 60) {
-        if (parseInt(startTime.hour) === 12) {
-            nextHour.value = 1;
-        } else {
-            nextHour.value = parseInt(startTime.hour) + 1;
+    startHour.value = startTime.hour;
+    startMinute.value = startTime.minute;
+    // startAmPm.value = startTime.ampm;
+    
+    if (rotationLength == 15) {
+        nextHour.value = parseInt(startTime.hour);
+        if (parseInt(startTime.minute) + 15 == 60) {
+            if (parseInt(startTime.hour) === 12) {
+                nextHour.value = 1;
+            } else {
+                nextHour.value = parseInt(startTime.hour) + 1;
+            }
         }
-    }
-    nextMinute.value = ((parseInt(startTime.minute) + 15) % 60).toString().padStart(2, '0');
-    // NextAmPm.value
-} else if (rotationLength == 20) {
-    nextHour.value = parseInt(startTime.hour);
-    if (parseInt(startTime.minute) + 20 == 60) {
-        if (parseInt(startTime.hour) === 12) {
-            nextHour.value = 1;
-        } else {
-            nextHour.value = parseInt(startTime.hour) + 1;
+        nextMinute.value = ((parseInt(startTime.minute) + 15) % 60).toString().padStart(2, '0');
+        // NextAmPm.value
+    } else if (rotationLength == 20) {
+        nextHour.value = parseInt(startTime.hour);
+        if (parseInt(startTime.minute) + 20 == 60) {
+            if (parseInt(startTime.hour) === 12) {
+                nextHour.value = 1;
+            } else {
+                nextHour.value = parseInt(startTime.hour) + 1;
+            }
         }
-    }
-    nextMinute.value = ((parseInt(startTime.minute) + 20) % 60).toString().padStart(2, '0');
-    // NextAmPm.value
-} else if (rotationLength == 30) {
-    nextHour.value = parseInt(startTime.hour);
-    if (parseInt(startTime.minute) + 30 == 60) {
-        if (parseInt(startTime.hour) === 12) {
-            nextHour.value = 1;
-        } else {
-            nextHour.value = parseInt(startTime.hour) + 1;
+        nextMinute.value = ((parseInt(startTime.minute) + 20) % 60).toString().padStart(2, '0');
+        // NextAmPm.value
+    } else if (rotationLength == 30) {
+        nextHour.value = parseInt(startTime.hour);
+        if (parseInt(startTime.minute) + 30 == 60) {
+            if (parseInt(startTime.hour) === 12) {
+                nextHour.value = 1;
+            } else {
+                nextHour.value = parseInt(startTime.hour) + 1;
+            }
         }
+        nextMinute.value = ((parseInt(startTime.minute) + 30) % 60).toString().padStart(2, '0');
+        // NextAmPm.value
     }
-    nextMinute.value = ((parseInt(startTime.minute) + 30) % 60).toString().padStart(2, '0');
-    // NextAmPm.value
 }
 
 /*
@@ -69,12 +72,6 @@ let rotationNumber = document.getElementById('rotation-number');
 rotationNumber.value = 1;
 let hasReachedEndTime = false;
 let hasReachedStartTime = false;
-
-// --------------------------------------------------------------------------------------------
-
-
-
-// --------------------------------------------------------------------------------------------
 
 function addRotationCount () {
 
@@ -335,30 +332,53 @@ removeStandButton.addEventListener("click", removeStand);
 
 function saveToLocalStorage () {
 
-  // Stand Names
-  getStands();
-  let standNames = JSON.stringify(stands);
-  localStorage.setItem('standNames', standNames);
-  // console.log(standNames);
+    // Rotation Times
+    localStorage.setItem('startHour', startHour.value);
+    localStorage.setItem('startMinute', startMinute.value);
 
-  // Lifeguard Names & Last Order
-  getLifeguards();
-  let lifeguardNames = JSON.stringify(lifeguards);
-  localStorage.setItem('lifeguardNames', lifeguardNames);
-  // console.log(lifeguardNames);
+    localStorage.setItem('nextHour', nextHour.value);
+    localStorage.setItem('nextMinute', nextMinute.value);
 
-  // Stand Count
-  localStorage.setItem('standCount', document.querySelectorAll('tr').length - 1);
+    // Rotation Number
+    localStorage.setItem('rotationNumber', rotationNumber.value);
 
-  // Rotation Number
-  localStorage.setItem('rotationNumber', rotationNumber.value);
+    // Stand Count
+    localStorage.setItem('standCount', document.querySelectorAll('tr').length - 1);
 
-  return
+    // Stand Names
+    getStands();
+    let standNames = JSON.stringify(stands);
+    localStorage.setItem('standNames', standNames);
+    // console.log(standNames);
+
+    // Lifeguard Names & Order
+    getLifeguards();
+    let lifeguardNames = JSON.stringify(lifeguards);
+    localStorage.setItem('lifeguardNames', lifeguardNames);
+    // console.log(lifeguardNames);
+
+    return
 }
 
 /*
     * GET LOCAL STORAGE
 */
+
+// ! ROTATION TIME VALUES
+
+const savedStartHour = parseInt(localStorage.getItem('startHour'));
+const savedStartMinute = parseInt(localStorage.getItem('startMinute'));
+    startHour.value = savedStartHour;
+    startMinute.value = savedStartMinute;
+
+const savedNextHour = parseInt(localStorage.getItem('nextHour'));
+const savedNextMinute = parseInt(localStorage.getItem('nextMinute'));
+    nextHour.value = savedNextHour;
+    nextMinute.value = savedNextMinute;
+
+    if (isNaN(startHour.value) || isNaN(startMinute.value) || isNaN(nextHour.value) || isNaN(nextMinute.value)) {
+        setStartTime();
+    }
 
 // ! ROTATION NUMBER VALUE
 

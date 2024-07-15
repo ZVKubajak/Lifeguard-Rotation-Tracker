@@ -64,37 +64,41 @@ if (rotationLength == 15) {
 */
 
 // ! ROTATION NUMBER FUNCTION
-// ? NEEDS REWORKING
 
 let rotationNumber = document.getElementById('rotation-number');
 rotationNumber.value = 1;
 let hasReachedEndTime = false;
+let hasReachedStartTime = false;
 
-// The following code sets its local storage value equal to the current number.
+// --------------------------------------------------------------------------------------------
 
-// const savedRotationNumber = parseInt(localStorage.getItem('savedRotationNumber'));
-// 
-// rotationNumber.value = savedRotationNumber; // Rotation Number (from Local Storage)
-// console.log(rotationNumber.value);
 
-function rotationCount () {
+
+// --------------------------------------------------------------------------------------------
+
+function addRotationCount () {
 
     if (nextHour.value == endTime.hour && nextMinute.value == endTime.minute) {
         hasReachedEndTime = true;
+        console.log('You have reached the end time.');
     } else {
         rotationNumber.value++;
-    
+        hasReachedStartTime = false;
+    }
+}
+
+function subtractRotationCount () {
+
+    if (startHour.value == startTime.hour && startMinute.value == startTime.minute) {
+        hasReachedStartTime = true;
+        console.log('You have reached the start time.');
+    } else {
+        rotationNumber.value--;
+        hasReachedEndTime = false;
     }
 }
 
 // ! ROTATION TIME FUNCTION
-// ? NEEDS REWORKING
-
-// If start time == end time, make that the last rotation number.
-
-// If rotationLength.value == 15, add 15 minutes to the start time for each rotation number.
-// Else if rotationLength.value == 20, add 20 minutes to the start time for each rotation number.
-// Else if rotationLength.value == 30, add 30 minutes to the start time for each rotation number.
 
 function addTime () {
 
@@ -169,106 +173,6 @@ function subtractTime () {
     }
 }
 
-// ! We need a function that generates the amount of rotations with the given operation hours.
-// ! When the user reaches the last rotation number or the end time, stop the buttons from going further.
-
-/* const currentTime = document.getElementById('rotation-time'); */
-
-function rotationTime() {
-  const rotationNumberValue = rotationNumber.value;
-  const timeRanges = [
-      '1:00 - 1:15',
-      '1:15 - 1:30',
-      '1:30 - 1:45',
-      '1:45 - 2:00',
-      '2:00 - 2:15',
-      '2:15 - 2:30',
-      '2:30 - 2:45',
-      '2:45 - 3:00',
-      '3:00 - 3:15',
-      '3:15 - 3:30',
-      '3:30 - 3:45',
-      '3:45 - 4:00',
-      '4:00 - 4:15',
-      '4:15 - 4:30',
-      '4:30 - 4:45',
-      '4:45 - 5:00',
-      '5:00 - 5:15',
-      '5:15 - 5:30',
-      '5:30 - 5:45',
-      '5:45 - 6:00',
-      '6:00 - 6:15',
-      '6:15 - 6:30',
-      '6:30 - 6:45',
-      '6:45 - 7:00'
-  ];
-
-  if (rotationNumberValue >= 1 && rotationNumberValue <= 24) {
-      currentTime.textContent = timeRanges[rotationNumberValue - 1];
-  } else {
-      currentTime.textContent = '';
-  }
-}
-
-// ! ROTATION NUMBER FUNCTION
-// ? NEEDS REWORKING
-
-// ! IDEA CODE
-
-console.log(endTime);
-
-function ideaFunction () {
-    function otherIdeaFunction() {
-        const endTime = JSON.parse(localStorage.getItem('end15')) || JSON.parse(localStorage.getItem('end20')) || JSON.parse(localStorage.getItem('end30'));
-        const startHour = parseInt(startTime.hour);
-        const startMinute = parseInt(startTime.minute);
-        const endHour = parseInt(endTime.hour);
-        const endMinute = parseInt(endTime.minute);
-
-        let rotationCount = 0;
-
-        if (rotationLength == 15) {
-            while (startHour !== endHour || startMinute !== endMinute) {
-                startMinute = (startMinute + 15) % 60;
-                if (startMinute === 0) {
-                    if (startHour === 12) {
-                        startHour = 1;
-                    } else {
-                        startHour++;
-                    }
-                }
-                rotationCount++;
-            }
-        } else if (rotationLength == 20) {
-            while (startHour !== endHour || startMinute !== endMinute) {
-                startMinute = (startMinute + 20) % 60;
-                if (startMinute === 0) {
-                    if (startHour === 12) {
-                        startHour = 1;
-                    } else {
-                        startHour++;
-                    }
-                }
-                rotationCount++;
-            }
-        } else if (rotationLength == 30) {
-            while (startHour !== endHour || startMinute !== endMinute) {
-                startMinute = (startMinute + 30) % 60;
-                if (startMinute === 0) {
-                    if (startHour === 12) {
-                        startHour = 1;
-                    } else {
-                        startHour++;
-                    }
-                }
-                rotationCount++;
-            }
-        }
-
-        return rotationCount;
-    }
-}
-
 // ! STAND ARRAY FUNCTION
 
 const stands = [];
@@ -332,35 +236,33 @@ function unrotateLifeguards() {
 }
 
 // ! LR BUTTON FUNCTIONS
-// ? NEEDS REWORKING
 
 // ? LEFT BUTTON
 
 function rotationLeft () {
-  if (isNaN(rotationNumber.value) || rotationNumber.value <= 1 || rotationNumber.value > 24) {
-      rotationNumber.value = 1;
-      currentTime.textContent = '2:00 - 2:15';
-  } else {
-      rotationNumber.value = parseInt(rotationNumber.value) - 1;
-      unrotateLifeguards();
-      subtractTime();
-  }
 
-  return
+    subtractRotationCount();
+
+    if (hasReachedStartTime === false) {
+        subtractTime();
+        unrotateLifeguards();
+    }
+
+    return
 }
 
 // ? RIGHT BUTTON
 
 function rotationRight () {
 
-    rotationCount();
+    addRotationCount();
 
     if (hasReachedEndTime === false) {
         addTime();
         rotateLifeguards();
-    } else {
-        console.log('You have reached the end time.');
     }
+
+    return
 }
 
 // ! ADD STAND FUNCTION
@@ -449,31 +351,42 @@ function saveToLocalStorage () {
   localStorage.setItem('standCount', document.querySelectorAll('tr').length - 1);
 
   // Rotation Number
-  const rotationNumberForLS = rotationNumber;
+  localStorage.setItem('rotationNumber', rotationNumber.value);
 
-  localStorage.setItem('savedRotationNumber', rotationNumberForLS);
+  return
 }
 
 /*
     * GET LOCAL STORAGE
 */
 
+// ! ROTATION NUMBER VALUE
+
+const savedRotationNumber = parseInt(localStorage.getItem('rotationNumber'));
+    console.log(rotationNumber.value);
+
+    if (isNaN(savedRotationNumber)) {
+        rotationNumber.value = 1;
+    } else {
+        rotationNumber.value = savedRotationNumber;
+    }
+
 // ! STAND COUNT VALUE
 
-let lastStandCount = parseInt(localStorage.getItem('standCount'));
-    console.log(lastStandCount);
+const savedStandCount = parseInt(localStorage.getItem('standCount'));
+    console.log(savedStandCount);
 
-    for (let i = 0; i < lastStandCount; i++) {
+    for (let i = 0; i < savedStandCount; i++) {
         addStand();
     }
 
 // ! STAND NAME VALUES
 
-let lastStandNamesJSON = localStorage.getItem('standNames');
-let lastStandNames = JSON.parse(lastStandNamesJSON) || [];
-    console.log(lastStandNames);
+const savedStandNamesJSON = localStorage.getItem('standNames');
+const savedStandNames = JSON.parse(savedStandNamesJSON) || [];
+    console.log(savedStandNames);
 
-    lastStandNames.forEach((name, index) => {
+    savedStandNames.forEach((name, index) => {
     const standInput = document.querySelectorAll('.stand-text-input');
     if (index >= standInput.length) {
         return;
@@ -484,11 +397,11 @@ let lastStandNames = JSON.parse(lastStandNamesJSON) || [];
 
 // ! LIFEGAURD NAME & ORDER VALUES
 
-let lastLifeguardNamesJSON = localStorage.getItem('lifeguardNames');
-let lastLifeguardNames = JSON.parse(lastLifeguardNamesJSON) || [];
-    console.log(lastLifeguardNames);
+const savedLifeguardNamesJSON = localStorage.getItem('lifeguardNames');
+const savedLifeguardNames = JSON.parse(savedLifeguardNamesJSON) || [];
+    console.log(savedLifeguardNames);
 
-    lastLifeguardNames.forEach((name, index) => {
+    savedLifeguardNames.forEach((name, index) => {
     const lifeguardInput = document.querySelectorAll('.lifeguard-text-input');
     if (index >= lifeguardInput.length) {
         return;

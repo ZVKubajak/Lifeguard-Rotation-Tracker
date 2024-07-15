@@ -36,9 +36,27 @@ if (rotationLength == 15) {
     nextMinute.value = ((parseInt(startTime.minute) + 15) % 60).toString().padStart(2, '0');
     // NextAmPm.value
 } else if (rotationLength == 20) {
-    console.log('20 minutes');
+    nextHour.value = parseInt(startTime.hour);
+    if (parseInt(startTime.minute) + 20 == 60) {
+        if (parseInt(startTime.hour) === 12) {
+            nextHour.value = 1;
+        } else {
+            nextHour.value = parseInt(startTime.hour) + 1;
+        }
+    }
+    nextMinute.value = ((parseInt(startTime.minute) + 20) % 60).toString().padStart(2, '0');
+    // NextAmPm.value
 } else if (rotationLength == 30) {
-    console.log('30 minutes');
+    nextHour.value = parseInt(startTime.hour);
+    if (parseInt(startTime.minute) + 30 == 60) {
+        if (parseInt(startTime.hour) === 12) {
+            nextHour.value = 1;
+        } else {
+            nextHour.value = parseInt(startTime.hour) + 1;
+        }
+    }
+    nextMinute.value = ((parseInt(startTime.minute) + 30) % 60).toString().padStart(2, '0');
+    // NextAmPm.value
 }
 
 /*
@@ -56,6 +74,9 @@ if (rotationLength == 15) {
 
 function addTime () {
 
+    startHour.value = nextHour.value;
+    startMinute.value = nextMinute.value;
+
     if (rotationLength == 15) {
         nextMinute.value = ((parseInt(nextMinute.value) + 15) % 60).toString().padStart(2, '0');
         if (parseInt(nextMinute.value) === 0) {
@@ -66,12 +87,66 @@ function addTime () {
             }
         }
     } else if (rotationLength == 20) {
-        console.log('20 minutes');
+        nextMinute.value = ((parseInt(nextMinute.value) + 20) % 60).toString().padStart(2, '0');
+        if (parseInt(nextMinute.value) === 0) {
+            if (parseInt(nextHour.value) === 12) {
+            nextHour.value = 1;
+            } else {
+            nextHour.value = parseInt(nextHour.value) + 1;
+            }
+        }
     } else if (rotationLength == 30) {
-        console.log('30 minutes');
-    }
-    
+        nextMinute.value = ((parseInt(nextMinute.value) + 30) % 60).toString().padStart(2, '0');
+        if (parseInt(nextMinute.value) === 0) {
+            if (parseInt(nextHour.value) === 12) {
+            nextHour.value = 1;
+            } else {
+            nextHour.value = parseInt(nextHour.value) + 1;
+            }
+        }
+    } 
 }
+
+function subtractTime () {
+
+    nextHour.value = startHour.value;
+    nextMinute.value = startMinute.value;
+
+    if (rotationLength == 15) {
+        startMinute.value = ((parseInt(startMinute.value) - 15) % 60).toString().padStart(2, '0');
+        if (parseInt(startMinute.value) < 0) {
+            startMinute.value = "45";
+            if (parseInt(startHour.value) === 1) {
+                startHour.value = 12;
+            } else {
+                startHour.value = parseInt(startHour.value) - 1;
+            }
+        }
+    } else if (rotationLength == 20) {
+        startMinute.value = ((parseInt(startMinute.value) - 20) % 60).toString().padStart(2, '0');
+        if (parseInt(startMinute.value) < 0) {
+            startMinute.value = "40";
+            if (parseInt(startHour.value) === 1) {
+                startHour.value = 12;
+            } else {
+                startHour.value = parseInt(startHour.value) - 1;
+            }
+        }
+    } else if (rotationLength == 30) {
+        startMinute.value = ((parseInt(startMinute.value) - 30) % 60).toString().padStart(2, '0');
+        if (parseInt(startMinute.value) < 0) {
+            startMinute.value = "30";
+            if (parseInt(startHour.value) === 1) {
+                startHour.value = 12;
+            } else {
+                startHour.value = parseInt(startHour.value) - 1;
+            }
+        }
+    }
+}
+
+// ! We need a function that generates the amount of rotations with the given operation hours.
+// ! When the user reaches the last rotation number or the end time, stop the buttons from going further.
 
 /* const currentTime = document.getElementById('rotation-time'); */
 
@@ -127,6 +202,60 @@ if (isNaN(rotationNumber.value))  {
   rotationNumber.value = 1;
 } else {
   rotationTime();
+}
+
+// ! IDEA CODE
+
+function rotationNumberAmount () {
+    function rotationNumberAmount() {
+        const endTime = JSON.parse(localStorage.getItem('end15')) || JSON.parse(localStorage.getItem('end20')) || JSON.parse(localStorage.getItem('end30'));
+        const startHour = parseInt(startTime.hour);
+        const startMinute = parseInt(startTime.minute);
+        const endHour = parseInt(endTime.hour);
+        const endMinute = parseInt(endTime.minute);
+
+        let rotationCount = 0;
+
+        if (rotationLength == 15) {
+            while (startHour !== endHour || startMinute !== endMinute) {
+                startMinute = (startMinute + 15) % 60;
+                if (startMinute === 0) {
+                    if (startHour === 12) {
+                        startHour = 1;
+                    } else {
+                        startHour++;
+                    }
+                }
+                rotationCount++;
+            }
+        } else if (rotationLength == 20) {
+            while (startHour !== endHour || startMinute !== endMinute) {
+                startMinute = (startMinute + 20) % 60;
+                if (startMinute === 0) {
+                    if (startHour === 12) {
+                        startHour = 1;
+                    } else {
+                        startHour++;
+                    }
+                }
+                rotationCount++;
+            }
+        } else if (rotationLength == 30) {
+            while (startHour !== endHour || startMinute !== endMinute) {
+                startMinute = (startMinute + 30) % 60;
+                if (startMinute === 0) {
+                    if (startHour === 12) {
+                        startHour = 1;
+                    } else {
+                        startHour++;
+                    }
+                }
+                rotationCount++;
+            }
+        }
+
+        return rotationCount;
+    }
 }
 
 // ! STAND ARRAY FUNCTION
@@ -203,7 +332,7 @@ function rotationLeft () {
   } else {
       rotationNumber.value = parseInt(rotationNumber.value) - 1;
       unrotateLifeguards();
-      rotationTime();
+      subtractTime();
   }
 
   return
@@ -222,6 +351,7 @@ function rotationRight () {
       currentTime.textContent = '2:00 - 2:15';
   } else {
       rotationNumber.value = parseInt(rotationNumber.value) + 1;
+      rotateLifeguards();
       addTime();
   }
 

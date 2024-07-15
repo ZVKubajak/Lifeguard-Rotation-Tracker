@@ -63,6 +63,30 @@ if (rotationLength == 15) {
     * FUNCTIONS
 */
 
+// ! ROTATION NUMBER FUNCTION
+// ? NEEDS REWORKING
+
+let rotationNumber = document.getElementById('rotation-number');
+rotationNumber.value = 1;
+let hasReachedEndTime = false;
+
+// The following code sets its local storage value equal to the current number.
+
+// const savedRotationNumber = parseInt(localStorage.getItem('savedRotationNumber'));
+// 
+// rotationNumber.value = savedRotationNumber; // Rotation Number (from Local Storage)
+// console.log(rotationNumber.value);
+
+function rotationCount () {
+
+    if (nextHour.value == endTime.hour && nextMinute.value == endTime.minute) {
+        hasReachedEndTime = true;
+    } else {
+        rotationNumber.value++;
+    
+    }
+}
+
 // ! ROTATION TIME FUNCTION
 // ? NEEDS REWORKING
 
@@ -189,25 +213,12 @@ function rotationTime() {
 // ! ROTATION NUMBER FUNCTION
 // ? NEEDS REWORKING
 
-const rotationNumber = document.getElementById('rotation-number');
-
-// The following code sets its local storage value equal to the current number.
-
-let lastRotationNumber = parseInt(localStorage.getItem('rotationNumber'));
-  console.log(lastRotationNumber);
-
-  rotationNumber.value = lastRotationNumber; // Rotation Number (from Local Storage)
-
-if (isNaN(rotationNumber.value))  {
-  rotationNumber.value = 1;
-} else {
-  rotationTime();
-}
-
 // ! IDEA CODE
 
-function rotationNumberAmount () {
-    function rotationNumberAmount() {
+console.log(endTime);
+
+function ideaFunction () {
+    function otherIdeaFunction() {
         const endTime = JSON.parse(localStorage.getItem('end15')) || JSON.parse(localStorage.getItem('end20')) || JSON.parse(localStorage.getItem('end30'));
         const startHour = parseInt(startTime.hour);
         const startMinute = parseInt(startTime.minute);
@@ -341,21 +352,15 @@ function rotationLeft () {
 // ? RIGHT BUTTON
 
 function rotationRight () {
-  if (isNaN(rotationNumber.value) || rotationNumber.value < 1) {
-      rotationNumber.value = 1;
-      currentTime.textContent = '2:00 - 2:15';
-  } else if (rotationNumber.value == 24) {
-      rotationNumber.value = 24;
-  } else if (rotationNumber.value > 24) {
-      rotationNumber.value = 1;
-      currentTime.textContent = '2:00 - 2:15';
-  } else {
-      rotationNumber.value = parseInt(rotationNumber.value) + 1;
-      rotateLifeguards();
-      addTime();
-  }
 
-  return
+    rotationCount();
+
+    if (hasReachedEndTime === false) {
+        addTime();
+        rotateLifeguards();
+    } else {
+        console.log('You have reached the end time.');
+    }
 }
 
 // ! ADD STAND FUNCTION
@@ -444,9 +449,9 @@ function saveToLocalStorage () {
   localStorage.setItem('standCount', document.querySelectorAll('tr').length - 1);
 
   // Rotation Number
-  const rotationNumberForLS = rotationNumber.value;
+  const rotationNumberForLS = rotationNumber;
 
-  localStorage.setItem('rotationNumber', rotationNumberForLS);
+  localStorage.setItem('savedRotationNumber', rotationNumberForLS);
 }
 
 /*

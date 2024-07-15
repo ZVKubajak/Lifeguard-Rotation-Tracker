@@ -260,6 +260,24 @@ table {
   background-color: #2e9f41;
 }
 
+#reset-button {
+  background-color: #8B0000;
+  border: none;
+  color: white;
+  padding: 10px 100px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#reset-button:active {
+  background-color: #7a0000;
+}
+
 @media screen and (width <= 480px) {
   #card-table {
     padding: 0 0 20px 0;

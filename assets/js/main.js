@@ -372,12 +372,12 @@ saveButton.addEventListener("click", saveToLocalStorage);
 const savedStartHour = parseInt(localStorage.getItem('startHour'));
 const savedStartMinute = parseInt(localStorage.getItem('startMinute'));
     startHour.value = savedStartHour;
-    startMinute.value = savedStartMinute;
+    startMinute.value = savedStartMinute.toString().padStart(2, '0');
 
 const savedNextHour = parseInt(localStorage.getItem('nextHour'));
 const savedNextMinute = parseInt(localStorage.getItem('nextMinute'));
     nextHour.value = savedNextHour;
-    nextMinute.value = savedNextMinute;
+    nextMinute.value = savedNextMinute.toString().padStart(2, '0');
 
     if (isNaN(startHour.value) || isNaN(startMinute.value) || isNaN(nextHour.value) || isNaN(nextMinute.value)) {
         setStartTime();

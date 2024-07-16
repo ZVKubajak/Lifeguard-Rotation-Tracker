@@ -300,6 +300,10 @@ table {
   #save-button {
     padding: 10px 75px;
   }
+
+  #reset-button {
+    padding: 10px 75px;
+  }
 }
 
 @media screen and (width <= 376px) {
@@ -312,6 +316,10 @@ table {
   }
 
   #save-button {
+    padding: 10px 50px;
+  }
+
+  #reset-button {
     padding: 10px 50px;
   }
 }
@@ -332,6 +340,10 @@ table {
   }
 
   #save-button {
+    padding: 10px 25px;
+  }
+
+  #reset-button {
     padding: 10px 25px;
   }
 }

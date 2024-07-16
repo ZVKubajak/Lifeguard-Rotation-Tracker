@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifeguard Rotation Tracker</title>
+    <link rel="stylesheet" href="./assets/css/main.css">
+</head>
+<body id="wrapper" class="disable-dbl-tap-zoom">
+    <header>
+        <h1>Lifeguard Rotation Tracker</h1>
+    </header>
+    <section id="card">
+        <div id="card-header">
+            <h2>Current Rotation</h2>
+            <div id="container">
+                <button id="left-button" onclick="rotationLeft ();">&lt;</button>
+                <input id="rotation-number" type="text" readonly>
+                <button id="right-button" onclick="rotationRight ();">&gt;</button>
+            </div>
+        </div>
+        <div id="card-table">
+
+            <div id="rotation-time">
+                <input id="start-hour" class="rotation-input" readonly>
+                :
+                <input id="start-minute" class="rotation-input" readonly>
+                <!-- <input id="start-ampm" class="rotation-input" readonly> -->
+                -
+                <input id="next-hour" class="rotation-input" readonly>
+                :
+                <input id="next-minute" class="rotation-input" readonly>
+                <!-- <input id="next-ampm" class="rotation-input" readonly> -->
+            </div>
+
+            <table>
+                <tr>
+                    <th class="hide-query">#</th>
+                    <th>STAND</th>
+                    <th>LIFEGUARD</th>
+                </tr>
+            </table>
+
+        </div>
+        <div id="card-footer">
+            <button id="as-button">Add Stand</button>
+            <button id="rs-button">Remove Stand</button>
+            <button id="save-button">Save</button>
+            <button id="reset-button">End Rotation</button>
+        </div>
+    </section>
+
+    <script src="./assets/js/logic.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,349 @@
+/* * Using Vanilla CSS */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* General CSS */
+
+.disable-dbl-tap-zoom {
+  touch-action: manipulation;
+}
+
+html,
+body,
+#wrapper {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#wrapper {
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #f9fbfd;
+  }
+
+header {
+  text-align: center;
+  padding: 20px;
+  padding-top: 0px;
+  color: hsl(206, 17%, 28%);
+}
+
+#card {
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 5px;
+  border-width: 1px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+  color: hsl(206, 17%, 28%);
+  font-size: 18px;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 30px 40px;
+}
+
+/* CSS for Card Header */
+
+h2 {
+    text-align: center;
+}
+
+#card-header::after {
+    content: " ";
+    display: block;
+    width: 100%;
+    background: #e7e9eb;
+    height: 2px;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+#rotation-number {
+  width: 50px;
+  padding: 5px;
+  border: 1px solid rgb(200,200,200);
+  border-radius: 5px;
+  text-align: center;
+  font-size: larger;
+  margin: 0 20px;
+}
+
+#left-button {
+    cursor: pointer;
+    font-size: larger;
+    background-color: rgb(250,250,250);
+    height: 50px;
+    width: 50px;
+    border: 1px solid gray;
+    border-radius: 50%;
+}
+
+#left-button:active {
+    background-color: rgb(240,240,240);
+}
+
+#right-button {
+    cursor: pointer;
+    font-size: larger;
+    background-color: rgb(250,250,250);
+    height: 50px;
+    width: 50px;
+    border: 1px solid gray;
+    border-radius: 50%;
+}
+
+#right-button:active {
+    background-color: rgb(240,240,240);
+}
+
+/* CSS for Card Table */
+
+#card-table {
+    padding: 0 20px 20px 20px;
+  }
+
+#card-table p {
+  text-align: center;
+  font-size: larger;
+  font-weight: bold;
+}
+
+#rotation-time {
+  text-align: center;
+}
+
+.rotation-input {
+  width: 40px;
+  padding: 5px;
+  border: 1px solid rgb(200,200,200);
+  border-radius: 5px;
+  text-align: center;
+  font-size: large;
+  margin: 15px 0;
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(200,200,200);
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    margin: 0 auto;
+  }
+  
+  td, th {
+    border: 1px solid rgb(190,190,190);
+    padding: 10px 20px;
+  }
+  
+  th {
+    background-color: red;
+    color: white;
+  }
+  
+  td {
+    text-align: center;
+  }
+
+  .stand-text-input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid rgb(200,200,200);
+    border-radius: 5px;
+    text-align: center;
+    /* font-weight: bold; */
+  }
+
+  .lifeguard-text-input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid rgb(200,200,200);
+    border-radius: 5px;
+    text-align: center;
+    /* font-weight: bold; */
+  }
+  
+  tr:nth-child(even) td {
+    background-color: rgb(250,250,250);
+  }
+  
+  tr:nth-child(odd) td {
+    background-color: rgb(245,245,245);
+  }
+  
+  caption {
+    padding: 10px;
+  }
+
+/* CSS for Card Footer */
+
+#card-footer {
+    text-align: center;
+}
+  
+#card-footer::before {
+    content: " ";
+    display: block;
+    width: 100%;
+    background: #e7e9eb;
+    height: 2px;
+}
+  
+#card-footer::after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+#as-button {
+    background-color: #55c2da;
+    border: none;
+    color: white;
+    padding: 10px 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#as-button:active {
+    background-color: #4db7cf;
+}
+
+#rs-button {
+    background-color: #ED0800;
+    border: none;
+    color: white;
+    padding: 10px 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#rs-button:active {
+    background-color: #d10800;
+}
+
+#save-button {
+  background-color: #33b249;
+  border: none;
+  color: white;
+  padding: 10px 100px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#save-button:active {
+  background-color: #2e9f41;
+}
+
+#reset-button {
+  background-color: #8B0000;
+  border: none;
+  color: white;
+  padding: 10px 100px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#reset-button:active {
+  background-color: #7a0000;
+}
+
+@media screen and (width <= 480px) {
+  #card-table {
+    padding: 0 0 20px 0;
+  }
+
+  td, th {
+    padding: 5px 10px;
+  }
+}
+
+@media screen and (width <= 400px) {
+  #as-button {
+    padding: 10px 75px;
+  }
+
+  #rs-button {
+    padding: 10px 75px;
+  }
+
+  #save-button {
+    padding: 10px 75px;
+  }
+
+  #reset-button {
+    padding: 10px 75px;
+  }
+}
+
+@media screen and (width <= 376px) {
+  #as-button {
+    padding: 10px 50px;
+  }
+
+  #rs-button {
+    padding: 10px 50px;
+  }
+
+  #save-button {
+    padding: 10px 50px;
+  }
+
+  #reset-button {
+    padding: 10px 50px;
+  }
+}
+
+@media screen and (width <= 351px) {
+  .hide-query {
+    display: none;
+  }
+}
+
+@media screen and (width <= 326px) {
+  #as-button {
+    padding: 10px 25px;
+  }
+
+  #rs-button {
+    padding: 10px 25px;
+  }
+
+  #save-button {
+    padding: 10px 25px;
+  }
+
+  #reset-button {
+    padding: 10px 25px;
+  }
+}

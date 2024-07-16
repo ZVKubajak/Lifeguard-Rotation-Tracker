@@ -1,0 +1,184 @@
+/* * Using Bootstrap Framework & Vanilla CSS */
+
+/*
+    ! GENERAL CSS
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.disable-dbl-tap-zoom {
+  touch-action: manipulation;
+}
+
+html,
+body,
+#wrapper {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#wrapper {
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #f9fbfd;
+  }
+
+/*
+    ! HEADER CSS
+*/
+
+header {
+  text-align: center;
+  padding: 20px;
+  padding-top: 0px;
+  color: hsl(206, 17%, 28%);
+}
+
+h1 {
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  unicode-bidi: isolate;
+  line-height: 1.125;
+}
+
+/*
+    ! CARD / FORM CSS
+*/
+
+#card {
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 5px;
+  border-width: 1px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+  color: hsl(206, 17%, 28%);
+  font-size: 18px;
+  margin: 0 auto;
+  max-width: 30%;
+  padding: 20px 40px;
+}
+
+#card-header::after {
+  content: " ";
+  display: block;
+  width: 100%;
+  background: linear-gradient(to right, lightcoral, lightblue);
+  height: 2px;
+}
+
+h2 {
+  font-size: 2em;
+  text-align: center;
+}
+
+#form {
+  padding-top: 12px;
+  text-align: center;
+}
+
+#form::after {
+  content: " ";
+  display: block;
+  width: 100%;
+  background: linear-gradient(to right, lightcoral, lightblue);
+  height: 2px;
+  margin-top: 12px;
+}
+
+#minute-15 {
+  display: none;
+}
+
+#minute-20 {
+  display: none;
+}
+
+#minute-30 {
+  display: none;
+}
+
+#time-select-text {
+  display: none;
+  padding-top: 12px;
+  font-size: 20px;
+}
+
+.time-select {
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--bs-body-color);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--bs-body-bg);
+  background-image: var(--bs-form-select-bg-img), var(--bs-form-select-bg-icon, none);
+  background-repeat: no-repeat;
+  background-position: right .75rem center;
+  background-size: 16px 12px;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+#card-footer {
+  text-align: center;
+  padding-top: 20px;
+}
+
+#submit-form {
+  padding: 0 50px;
+  border-radius: 5px;
+  border-color: #33b249;
+  background-color: #33b249;
+  color: white;
+}
+
+#submit-form:active {
+  background-color: #2e9f41;
+}
+
+@media screen and (width <= 1060px) {
+  #card {
+    max-width: 50%;
+  }
+}
+
+@media screen and (width <= 660px) {
+  #card {
+    max-width: 70%;
+  }
+}
+
+@media screen and (width <= 525px) {
+  #card {
+    max-width: 90%;
+  }
+}
+
+@media screen and (width <= 380px) {
+  #card {
+    max-width: 100%;
+  }
+}
+
+@media screen and (width <= 350px) {
+  #rotation-length {
+    font-size: 12px;
+  }
+}

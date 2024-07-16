@@ -364,6 +364,20 @@ const saveButton = document.getElementById('save-button');
 saveButton.addEventListener("click", saveToLocalStorage);
 
 /*
+    * RESET LOCAL STORAGE
+*/
+
+// ! RESET & REDIRECT FUNCTION
+
+function endRotation () {
+    localStorage.clear();
+    window.location.href = 'index.html';
+}
+
+const resetButton = document.getElementById('reset-button');
+resetButton.addEventListener("click", endRotation);
+
+/*
     * GET LOCAL STORAGE
 */
 
@@ -432,17 +446,3 @@ const savedLifeguardNames = JSON.parse(savedLifeguardNamesJSON) || [];
         lifeguardInput[index].value = name;
     }
 });
-
-/*
-    * REST LOCAL STORAGE
-*/
-
-// ! RESET & REDIRECT FUNCTION
-
-function endRotation () {
-    localStorage.clear();
-    window.location.href = 'index.html';
-}
-
-const resetButton = document.getElementById('reset-button');
-resetButton.addEventListener("click", endRotation);

@@ -152,3 +152,33 @@ h2 {
 #submit-form:active {
   background-color: #2e9f41;
 }
+
+@media screen and (width <= 1060px) {
+  #card {
+    max-width: 50%;
+  }
+}
+
+@media screen and (width <= 660px) {
+  #card {
+    max-width: 70%;
+  }
+}
+
+@media screen and (width <= 525px) {
+  #card {
+    max-width: 90%;
+  }
+}
+
+@media screen and (width <= 380px) {
+  #card {
+    max-width: 100%;
+  }
+}
+
+@media screen and (width <= 350px) {
+  #rotation-length {
+    font-size: 12px;
+  }
+}

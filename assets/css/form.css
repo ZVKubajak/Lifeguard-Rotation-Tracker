@@ -1,7 +1,7 @@
 /* * Using Bootstrap Framework & Vanilla CSS */
 
 /*
-    ! GENERAL CSS
+  ! GENERAL CSS
 */
 
 *,
@@ -29,12 +29,12 @@ body,
 }
 
 body {
-    font-family: sans-serif;
-    background-color: #f9fbfd;
+  font-family: sans-serif;
+  background-color: #f9fbfd;
   }
 
 /*
-    ! HEADER CSS
+  ! HEADER CSS
 */
 
 header {
@@ -57,7 +57,7 @@ h1 {
 }
 
 /*
-    ! CARD / FORM CSS
+  ! CARD / FORM CSS
 */
 
 #card {
@@ -153,38 +153,38 @@ h2 {
   background-color: #2e9f41;
 }
 
-@media screen and (width <= 1060px) {
+@media screen and (max-width: 1060px) {
   #card {
-    max-width: 50%;
+  max-width: 50%;
   }
 }
 
-@media screen and (width <= 660px) {
+@media screen and (max-width: 660px) {
   #card {
-    max-width: 70%;
+  max-width: 70%;
   }
 }
 
-@media screen and (width <= 525px) {
+@media screen and (max-width: 525px) {
   #card {
-    max-width: 90%;
+  max-width: 90%;
   }
 }
 
-@media screen and (width <= 380px) {
+@media screen and (max-width: 380px) {
   #card {
-    max-width: 100%;
+  max-width: 100%;
   }
 }
 
-@media screen and (width <= 350px) {
+@media screen and (max-width: 350px) {
   #rotation-length {
-    font-size: 12px;
+  font-size: 12px;
   }
 }
 
-@media screen and (width <= 250px) {
+@media screen and (max-width: 250px) {
   #submit-form {
-    padding: 0;
+  padding: 0;
   }
 }

@@ -153,6 +153,22 @@ h2 {
   background-color: #2e9f41;
 }
 
+#error {
+  display: none;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 16px;
+  color: red;
+}
+
+#error-icon {
+  margin-bottom: 5px;
+}
+
+#error-message {
+  margin: 0;
+}
+
 @media screen and (max-width: 1060px) {
   #card {
   max-width: 50%;

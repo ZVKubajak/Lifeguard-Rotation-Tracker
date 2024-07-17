@@ -159,7 +159,12 @@ function redirectToMain () {
 
 const submitForm = document.getElementById('submit-form');
 submitForm.addEventListener('click', function() {
-  localStorage.setItem('rotation-length', JSON.stringify(selectLength.value));
-  collectFormData();
-  redirectToMain();
+
+  if (selectLength.value !== "15" && selectLength.value !== "20" && selectLength.value !== "30") {
+    document.getElementById('error').style.display = 'block';
+  } else {
+    localStorage.setItem('rotation-length', JSON.stringify(selectLength.value));
+    collectFormData();
+    redirectToMain();
+  }
 });

@@ -5,8 +5,8 @@
 const rotationLength = JSON.parse(localStorage.getItem('rotation-length'));
 // console.log(rotationLength);
 
-const startTime = JSON.parse(localStorage.getItem('start15')) || JSON.parse(localStorage.getItem('start20')) || JSON.parse(localStorage.getItem('start30'));
-const endTime = JSON.parse(localStorage.getItem('end15')) || JSON.parse(localStorage.getItem('end20')) || JSON.parse(localStorage.getItem('end30'));
+const startTime = JSON.parse(localStorage.getItem('start15')) || JSON.parse(localStorage.getItem('start20')) || JSON.parse(localStorage.getItem('start30')) || JSON.parse(localStorage.getItem('start45')) || JSON.parse(localStorage.getItem('start60'));
+const endTime = JSON.parse(localStorage.getItem('end15')) || JSON.parse(localStorage.getItem('end20')) || JSON.parse(localStorage.getItem('end30')) || JSON.parse(localStorage.getItem('end45')) || JSON.parse(localStorage.getItem('end60'));
 // console.log(startTime);
 // console.log(endTime);
 
@@ -58,6 +58,37 @@ function setStartTime () {
             }
         }
         nextMinute.value = ((parseInt(startTime.minute) + 30) % 60).toString().padStart(2, '0');
+        // NextAmPm.value
+    } else if (rotationLength == 45) {
+        nextHour.value = parseInt(startTime.hour);
+        if (parseInt(startTime.minute) + 45 == 60) {
+            if (parseInt(startTime.hour) === 12) {
+                nextHour.value = 1;
+            } else {
+                nextHour.value = parseInt(startTime.hour) + 1;
+            }
+            nextMinute.value = parseInt(0).toString().padStart(2, '0');
+        } else if (parseInt(startTime.minute) + 45 == 75) {
+            if (parseInt(startTime.hour) === 12) {
+                nextHour.value = 1;
+            } else {
+                nextHour.value = parseInt(startTime.hour) + 1;
+            }
+            nextMinute.value = parseInt(15);
+        } else if (parseInt(startTime.minute) + 45 == 90) {
+            if (parseInt(startTime.hour) === 12) {
+                nextHour.value = 1;
+            } else {
+                nextHour.value = parseInt(startTime.hour) + 1;
+            }
+            nextMinute.value = parseInt(30);
+        } else {
+            nextMinute.value = parseInt(45);
+        }
+        // NextAmPm.value
+    } else if (rotationLength == 60) {
+        nextHour.value = parseInt(startTime.hour) + 1;
+        nextMinute.value = parseInt(startTime.minute).toString().padStart(2, '0');
         // NextAmPm.value
     }
 }

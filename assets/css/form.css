@@ -111,6 +111,14 @@ h2 {
   display: none;
 }
 
+#minute-45 {
+  display: none;
+}
+
+#minute-60 {
+  display: none;
+}
+
 #time-select-text {
   display: none;
   padding-top: 12px;

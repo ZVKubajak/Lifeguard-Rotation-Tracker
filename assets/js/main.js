@@ -160,7 +160,34 @@ function addTime () {
             nextHour.value = parseInt(nextHour.value) + 1;
             }
         }
-    } 
+    } else if (rotationLength == 45) {
+        nextMinute.value = ((parseInt(nextMinute.value) + 45) % 60).toString().padStart(2, '0');
+        if (parseInt(nextMinute.value) === 0) {
+            if (parseInt(nextHour.value) === 12) {
+            nextHour.value = 1;
+            } else {
+            nextHour.value = parseInt(nextHour.value) + 1;
+            }
+        } else if (parseInt(nextMinute.value) === 15) {
+            if (parseInt(nextHour.value) === 12) {
+            nextHour.value = 1;
+            } else {
+            nextHour.value = parseInt(nextHour.value) + 1;
+            }
+        } else if (parseInt(nextMinute.value) === 30) {
+            if (parseInt(nextHour.value) === 12) {
+            nextHour.value = 1;
+            } else {
+            nextHour.value = parseInt(nextHour.value) + 1;
+            }
+        }
+    } else if (rotationLength == 60) {
+        if (parseInt(nextHour.value) === 12) {
+            nextHour.value = 1;
+        } else {
+            nextHour.value = parseInt(nextHour.value) + 1;
+        }
+    }
 }
 
 function subtractTime () {
@@ -197,6 +224,36 @@ function subtractTime () {
             } else {
                 startHour.value = parseInt(startHour.value) - 1;
             }
+        }
+    } else if (rotationLength == 45) {
+        startMinute.value = (parseInt(startMinute.value) - 45).toString().padStart(2, '0');
+        if (parseInt(startMinute.value) === -45) {
+            if (parseInt(nextHour.value) === 1) {
+           startHour.value = 12;
+            } else {
+            startHour.value = parseInt(startHour.value) - 1;
+            }
+            startMinute.value = "15";
+        } else if (parseInt(startMinute.value) === -30) {
+            if (parseInt(nextHour.value) === 1) {
+            startHour.value = 12;
+            } else {
+            startHour.value = parseInt(startHour.value) - 1;
+            }
+            startMinute.value = "30";
+        } else if (parseInt(startMinute.value) === -15) {
+            if (parseInt(nextHour.value) === 1) {
+            startHour.value = 12;
+            } else {
+            startHour.value = parseInt(startHour.value) - 1;
+            }
+            startMinute.value = "45";
+        }
+    } else if (rotationLength == 60) {
+        if (parseInt(startHour.value) === 1) {
+            startHour.value = 12;
+        } else {
+            startHour.value = parseInt(startHour.value) - 1;
         }
     }
 }

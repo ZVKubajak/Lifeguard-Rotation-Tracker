@@ -15,35 +15,35 @@ selectLength.addEventListener('change', function () {
   const minute60 = document.getElementById('minute-60');
 
   if (selectLength.value == 15) {
+    rotationLength = 15;
     minute15.setAttribute('style', 'display: inline');
     [minute20, minute30, minute45, minute60].forEach(minute => {
       minute.setAttribute('style', 'display: none');
     });
-    rotationLength = 15;
   } else if (selectLength.value == 20) {
+    rotationLength = 20;
     minute20.setAttribute('style', 'display: inline');
     [minute15, minute30, minute45, minute60].forEach(minute => {
       minute.setAttribute('style', 'display: none');
     });
-    rotationLength = 20;
   } else if (selectLength.value == 30) {
+    rotationLength = 30;
     minute30.setAttribute('style', 'display: inline');
     [minute15, minute20, minute45, minute60].forEach(minute => {
       minute.setAttribute('style', 'display: none');
     });
-    rotationLength = 30;
   } else if (selectLength.value == 45) {
+    rotationLength = 45;
     minute45.setAttribute('style', 'display: inline');
     [minute15, minute20, minute30, minute60].forEach(minute => {
       minute.setAttribute('style', 'display: none');
     });
-    rotationLength = 45;
   } else if (selectLength.value == 60) {
+    rotationLength = 60;
     minute60.setAttribute('style', 'display: inline');
     [minute15, minute20, minute30, minute45].forEach(minute => {
       minute.setAttribute('style', 'display: none');
     });
-    rotationLength = 60;
   }
 });
 
@@ -67,13 +67,10 @@ function collectFormData(length) {
     minute: endMinute.value,
   };
 
+  localStorage.clear();
+
   localStorage.setItem('startTime', JSON.stringify(startTime));
   localStorage.setItem('endTime', JSON.stringify(endTime));
-
-  const removedLengths = ['start20', 'end20', 'start30', 'end30', 'start45', 'end45', 'start60', 'end60'];
-  removedLengths.forEach(length => {
-    localStorage.removeItem(length);
-  });
 };
 
 // ! REDIRECT TO MAIN FUNCTION
@@ -90,8 +87,12 @@ submitForm.addEventListener('click', function () {
   if (rotationLength !== 15 && rotationLength !== 20 && rotationLength !== 30 && rotationLength !== 45 && rotationLength !== 60) {
     document.getElementById('error').style.display = 'block';
   } else {
-    localStorage.setItem('rotation-length', JSON.stringify(rotationLength));
     collectFormData(rotationLength);
+    localStorage.setItem('rotationLength', JSON.stringify(rotationLength));
     redirectToMain();
   }
 });
+
+if (localStorage.getItem('rotationLength')) {
+  redirectToMain();
+}
